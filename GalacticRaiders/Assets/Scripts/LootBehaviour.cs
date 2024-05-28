@@ -14,7 +14,7 @@ public class LootBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(Vector3.up, 90f * Time.deltaTime);
     }
 
     private void OnDestroy() {
