@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 6661365078014805312}
   - component: {fileID: 2455584757397969294}
   - component: {fileID: 5751877645493039937}
-  - component: {fileID: 6258844683839216872}
   - component: {fileID: 2102830773768502509}
   - component: {fileID: 322469292273470247}
   m_Layer: 0
@@ -208,29 +207,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6258844683839216872
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473107248621032467}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &2102830773768502509
 CharacterController:
   m_ObjectHideFlags: 0
@@ -270,6 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 5
+  slideSpeed: 10
+  boostSpeed: 2
+  jumpHeight: 3
   gravity: 9.81
   airControl: 1
