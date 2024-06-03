@@ -44,19 +44,22 @@ public class GunHandling : MonoBehaviour
         MyInput();
 
         // SetText
-        ammoText.SetText(bulletsLeft + "/" + magazineSize);
+        if (ammoText != null)
+            ammoText.SetText(bulletsLeft + "/" + magazineSize);
 
-        if (bulletsLeft == 0 && !reloading)
-        {
-            reloadText.SetText("Reload");
-        }
-        else if (reloading)
-        {
-            reloadText.SetText("Reloading");
-        }
-        else
-        {
-            reloadText.SetText("");
+        if (reloadText != null) {
+            if (bulletsLeft == 0 && !reloading)
+            {
+                reloadText.SetText("Reload");
+            }
+            else if (reloading)
+            {
+                reloadText.SetText("Reloading");
+            }
+            else
+            {
+                reloadText.SetText("");
+            }
         }
     }
 
