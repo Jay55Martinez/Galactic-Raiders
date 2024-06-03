@@ -74,14 +74,14 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
 
         if (movementAnimate != null)
-        UpdateAnimation();
+            UpdateAnimation();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
 
-        Debug.Log(rb.velocity.magnitude);
+        Debug.Log(grounded);
     }
 
     private void MyInput()

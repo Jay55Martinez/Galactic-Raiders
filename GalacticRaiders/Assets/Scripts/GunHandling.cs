@@ -25,11 +25,14 @@ public class GunHandling : MonoBehaviour
     public GameObject muzzleFlash, bulletHole;
     public TextMeshProUGUI ammoText, reloadText;
 
+    // recoil anim
+    private Vector3 standardPosition; 
 
     public void Start()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        standardPosition = transform.localPosition;
     }
 
     public void Update()
@@ -52,6 +55,7 @@ public class GunHandling : MonoBehaviour
             reloadText.SetText("");
         }
     }
+
     private void MyInput()
     {
         if (allowButtonHold)
@@ -73,6 +77,13 @@ public class GunHandling : MonoBehaviour
         {
             bulletsShot = bulletsPerTap;
             Shoot();
+        }
+
+        // animate gun moving back
+        if (shooting && bulletsLeft > 0) {
+            transform.localPosition = standardPosition - new Vector3(0, 0, 0.6f);
+        } else {
+            transform.localPosition = standardPosition;
         }
     }
 
@@ -100,6 +111,8 @@ public class GunHandling : MonoBehaviour
 
         bulletsLeft--;
         bulletsShot--;
+
+        // animate;
 
         Invoke("ResetShot", timeBetweenShooting);
 
