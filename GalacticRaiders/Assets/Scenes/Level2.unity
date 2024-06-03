@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1579,11 +1579,15 @@ MonoBehaviour:
   jumpCoolDown: 0.5
   airMultiplier: 0.5
   jumpDelay: 0.05
+  slideForce: 200
+  slideYScale: 0.5
+  slideJumpForce: 50
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
   jumpKey: 32
+  slideKey: 306
   orientation: {fileID: 1851201659}
 --- !u!54 &523225933
 Rigidbody:

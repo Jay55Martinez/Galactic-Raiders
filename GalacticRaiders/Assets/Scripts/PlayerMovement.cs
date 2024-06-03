@@ -15,13 +15,22 @@ public class PlayerMovement : MonoBehaviour
     public float jumpDelay;
     bool readyToJump;
 
-    [Header("Gournd Check")]
+    [Header("Sliding")]
+    public float slideForce;
+    public float slideYScale;
+    public float slideJumpForce;
+    private float startYscale;
+    private bool sliding;
+    private Vector3 slideDir;
+
+    [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode slideKey = KeyCode.LeftControl;
 
     public Transform orientation;
 
@@ -44,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementAnimate != null)
         movementAnimate.SetInteger("transitionVar", 0);
+
+        startYscale = transform.localScale.y;
 
         ResetJump();
     }
@@ -69,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+
+        Debug.Log(rb.velocity.magnitude);
     }
 
     private void MyInput()
@@ -88,13 +101,27 @@ public class PlayerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
+
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0)) {
+            StartSlide();
+        }
+
+        if (Input.GetKeyUp(slideKey) && sliding) {
+            StopSlide();
+        }
+
+        if (Input.GetKeyDown(jumpKey) && grounded && sliding) {
+            SlideJump();
+        }
     }
 
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (grounded)
+        if (sliding)
+            SlidingMovement();
+        else if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
@@ -121,6 +148,33 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private void StartSlide() {
+        sliding = true;
+
+        readyToJump = false;
+
+        slideDir = moveDirection;
+        transform.localScale = new Vector3(transform.localScale.x, slideYScale, transform.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+    }
+
+    private void SlidingMovement() {
+        rb.AddForce(slideDir.normalized * slideForce, ForceMode.Force);
+    }
+
+    private void StopSlide() {
+        sliding = false;
+
+        readyToJump = true;
+
+        transform.localScale = new Vector3(transform.localScale.x, startYscale, transform.localScale.z);
+    }
+
+    private void SlideJump() {
+        Vector3 slideJump = slideDir.normalized + 0.1f * orientation.up;
+        rb.AddForce(slideJump.normalized * slideJumpForce, ForceMode.Impulse);
     }
 
     private void UpdateAnimation()
