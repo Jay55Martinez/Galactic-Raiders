@@ -9,7 +9,6 @@ public class RobotBehaviour : MonoBehaviour
     public int damageAmount = 10;
     public float minDistance = 1;
     public float cooldown = 5;
-
     private float attackTimer;
     
     // Start is called before the first frame update
@@ -53,8 +52,4 @@ public class RobotBehaviour : MonoBehaviour
     //         playerHealth.TakeDamage(damageAmount);  
     //     }
     // }
-
-    private void OnDestroy() {
-        transform.parent.GetComponent<EnemySpawner>().DecrementEnemies(); // decrease # of active 
-    }
 }

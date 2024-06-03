@@ -25,11 +25,18 @@ public class GunHandling : MonoBehaviour
     public GameObject muzzleFlash, bulletHole;
     public TextMeshProUGUI ammoText, reloadText;
 
+    // recoil anim
+    private Vector3 standardPosition; 
+
+    // audio
+    public AudioClip fireSFX;
+    public AudioClip reloadSFX;
 
     public void Start()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        standardPosition = transform.localPosition;
     }
 
     public void Update()
@@ -52,6 +59,7 @@ public class GunHandling : MonoBehaviour
             reloadText.SetText("");
         }
     }
+
     private void MyInput()
     {
         if (allowButtonHold)
@@ -74,6 +82,13 @@ public class GunHandling : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shoot();
         }
+
+        // animate gun moving back
+        if (shooting && bulletsLeft > 0) {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, standardPosition - new Vector3(0, 0, 0.6f), 10f * Time.deltaTime);
+        } else {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, standardPosition, 10f * Time.deltaTime);
+        }
     }
 
     private void Shoot()
@@ -91,7 +106,7 @@ public class GunHandling : MonoBehaviour
         {
             if (rayHit.collider.CompareTag("Enemy"))
             {
-                // TODO: have enemy take damage
+                rayHit.collider.gameObject.GetComponent<EnemyHit>().TakeDamage(damage);
             }
         }
 
@@ -107,6 +122,9 @@ public class GunHandling : MonoBehaviour
         {
             Invoke("Shoot", timeBetweenShots);
         }
+
+        // audio
+        AudioSource.PlayClipAtPoint(fireSFX, transform.position);
     }
 
     private void ResetShot()
@@ -117,6 +135,7 @@ public class GunHandling : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        AudioSource.PlayClipAtPoint(reloadSFX, transform.position);
         Invoke("ReloadFinished", reloadTime);
     }
 

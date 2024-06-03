@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4760510877292147317}
   - component: {fileID: 5502775076497050377}
   - component: {fileID: 185881130707575947}
+  - component: {fileID: 6089802580013333342}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +103,22 @@ MonoBehaviour:
   damageAmount: 10
   minDistance: 1
   cooldown: 5
+  health: 1
+  deathSFX: {fileID: 8300000, guid: 621d1e1ee7083874097744b893433a27, type: 3}
+--- !u!114 &6089802580013333342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8875492707904203560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa247be609768c4086729dc207f617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  deathSFX: {fileID: 8300000, guid: 621d1e1ee7083874097744b893433a27, type: 3}
 --- !u!1001 &4042257473021443033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,15 +209,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: f13349cc09b03d447a26b54d406aaa8e, type: 3}
       propertyPath: m_LocalPosition.x
