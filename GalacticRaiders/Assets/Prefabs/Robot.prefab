@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 7
   damageAmount: 10
   minDistance: 1
+  cooldown: 5
 --- !u!1001 &4042257473021443033
 PrefabInstance:
   m_ObjectHideFlags: 0
