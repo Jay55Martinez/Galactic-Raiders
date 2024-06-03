@@ -641,6 +641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1376711267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6661365078014805312, guid: 5bd6c09db72d9d64f8077f2b49204df5, type: 3}
+  m_PrefabInstance: {fileID: 7389453034954217110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1929664436
 Mesh:
   m_ObjectHideFlags: 0
@@ -882,6 +887,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
       propertyPath: currencyText
       value: 
@@ -1157,6 +1166,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8017549027401889400, guid: 5bd6c09db72d9d64f8077f2b49204df5, type: 3}
+      propertyPath: sensX
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017549027401889400, guid: 5bd6c09db72d9d64f8077f2b49204df5, type: 3}
+      propertyPath: sensY
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017549027401889400, guid: 5bd6c09db72d9d64f8077f2b49204df5, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 1376711267}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
