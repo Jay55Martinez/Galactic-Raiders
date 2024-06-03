@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Loot
   - Enemy
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX

@@ -28,6 +28,10 @@ public class GunHandling : MonoBehaviour
     // recoil anim
     private Vector3 standardPosition; 
 
+    // audio
+    public AudioClip fireSFX;
+    public AudioClip reloadSFX;
+
     public void Start()
     {
         bulletsLeft = magazineSize;
@@ -102,7 +106,7 @@ public class GunHandling : MonoBehaviour
         {
             if (rayHit.collider.CompareTag("Enemy"))
             {
-                // TODO: have enemy take damage
+                rayHit.collider.gameObject.GetComponent<EnemyHit>().TakeDamage(damage);
             }
         }
 
@@ -112,14 +116,15 @@ public class GunHandling : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
-        // animate;
-
         Invoke("ResetShot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
         {
             Invoke("Shoot", timeBetweenShots);
         }
+
+        // audio
+        AudioSource.PlayClipAtPoint(fireSFX, transform.position);
     }
 
     private void ResetShot()
@@ -130,6 +135,7 @@ public class GunHandling : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        AudioSource.PlayClipAtPoint(reloadSFX, transform.position);
         Invoke("ReloadFinished", reloadTime);
     }
 
