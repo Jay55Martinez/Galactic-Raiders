@@ -8,21 +8,25 @@ public class EnemySpawner : MonoBehaviour
     
     public float waveTransition;
     public float waveDelay;
+
+    public GameObject progress; // enter door that unlocks / progression item
+
     private int waveCounter = 0;
     private int activeEnemies = 0;
     private float waveTimer;
+    private bool isSpawning;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isSpawning = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (waveCounter < waves.Length) { // have all the waves been spawned?
-            if ((waveTimer > waveTransition) && (activeEnemies == 0)) {
+            if ((waveTimer > waveTransition) && (activeEnemies == 0) && isSpawning) {
                 SpawnWave();
             }
             waveTimer += Time.deltaTime;
@@ -49,6 +53,12 @@ public class EnemySpawner : MonoBehaviour
         
         if (activeEnemies == 0) {
             waveTimer = 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player")) {
+            isSpawning = true;
         }
     }
 }

@@ -44,19 +44,22 @@ public class GunHandling : MonoBehaviour
         MyInput();
 
         // SetText
-        ammoText.SetText(bulletsLeft + "/" + magazineSize);
+        if (ammoText != null)
+            ammoText.SetText(bulletsLeft + "/" + magazineSize);
 
-        if (bulletsLeft == 0 && !reloading)
-        {
-            reloadText.SetText("Reload");
-        }
-        else if (reloading)
-        {
-            reloadText.SetText("Reloading");
-        }
-        else
-        {
-            reloadText.SetText("");
+        if (reloadText != null) {
+            if (bulletsLeft == 0 && !reloading)
+            {
+                reloadText.SetText("Reload");
+            }
+            else if (reloading)
+            {
+                reloadText.SetText("Reloading");
+            }
+            else
+            {
+                reloadText.SetText("");
+            }
         }
     }
 
@@ -107,10 +110,12 @@ public class GunHandling : MonoBehaviour
             if (rayHit.collider.CompareTag("Enemy"))
             {
                 rayHit.collider.gameObject.GetComponent<EnemyHit>().TakeDamage(damage);
+            } else {
+                // only place bullethole if there are no enemies
+                Instantiate(bulletHole, rayHit.point, Quaternion.Euler(0, 180, 0)); // this only works on walls in certain directions
             }
         }
 
-        Instantiate(bulletHole, rayHit.point, Quaternion.Euler(0, 180, 0));
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
         bulletsLeft--;
