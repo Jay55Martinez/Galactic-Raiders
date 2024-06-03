@@ -80,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-
-        Debug.Log(grounded);
     }
 
     private void MyInput()
