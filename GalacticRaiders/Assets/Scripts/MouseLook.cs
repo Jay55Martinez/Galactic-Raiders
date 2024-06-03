@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    Transform playerBody;
-    public float mouseSensitivity = 10;
+    public Transform orientation;
+    public Transform gunOrientation;
 
-    float pitch = 0;
+    public float sensX;
+    public float sensY;
+
+    float xRotation;
+    float yRotation;
 
     // Start is called before the first frame update
     void Start()
-    {
-        // grab necessary info
-        playerBody = transform.parent.transform;
-
+    { 
         // remove cursor from screen
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,17 +25,20 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         // get input from the mouse
-        float moveX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float moveY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
-        // yaw
-        playerBody.Rotate(Vector3.up * moveX);
+        yRotation += mouseX;
+        xRotation -= mouseY;
 
-        // pitch
-        pitch -= moveY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // restrict movement to -90 - 90
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        if (gunOrientation != null)
+        {
+            gunOrientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        }
     }
 }
