@@ -20,6 +20,15 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (lookAt != null) {
+                if (lookAt.CompareTag("Ammo"))
+                {
+                    FindObjectOfType<GunHandling>().AddReserveAmmo(5);
+                    FindObjectOfType<GameManager>().UpdateAmmoCounter(5);
+                } 
+                else if (lookAt.CompareTag("Heal"))
+                {
+                    FindObjectOfType<GameManager>().UpdateHealCounter(1);
+                }
                 Debug.Log("pickup!");
                 // pick up the item being looked at
                 Destroy(lookAt);
@@ -30,11 +39,13 @@ public class Interact : MonoBehaviour
     void FixedUpdate() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, lootDistance)) {
-            if (hit.collider.CompareTag("Loot")) {
+            if (hit.collider.CompareTag("Loot") || hit.collider.CompareTag("Ammo") || hit.collider.CompareTag("Heal")) {
                 lookAt = hit.collider.gameObject;
                 pickupText.text = "Press 'E' to pickup";
                 pickupText.gameObject.SetActive(true);
-            } else {
+            }
+            else 
+            {
                 pickupText.gameObject.SetActive(false);
                 lookAt = null;
             }

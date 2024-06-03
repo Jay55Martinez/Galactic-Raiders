@@ -165,5 +165,6 @@ public class GunHandling : MonoBehaviour
     public void AddReserveAmmo(int amount)
     {
         reserveAmmo += amount;
+        reserveAmmo  = Mathf.Clamp(reserveAmmo, 0, magazineSize);
     }
 }
