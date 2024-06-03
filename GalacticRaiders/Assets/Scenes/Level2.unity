@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2678,6 +2678,8 @@ MonoBehaviour:
   bulletHole: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   ammoText: {fileID: 353403966}
   reloadText: {fileID: 1880833885}
+  fireSFX: {fileID: 8300000, guid: f793b489f8d44f14193404685deb885c, type: 3}
+  reloadSFX: {fileID: 8300000, guid: ec29eaa2552585f40a9e770bc2b1ccf3, type: 3}
 --- !u!1 &1791171473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,9 +3159,9 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 523225934}
   - {fileID: 1554763502}
   - {fileID: 1501170468}
   - {fileID: 415649479}
-  - {fileID: 523225934}
   - {fileID: 1791171477}
   - {fileID: 1868077301}
