@@ -7,6 +7,11 @@ TagManager:
   - Loot
   - Enemy
   - EnemySpawner
+  - Ammo
+  - Heal
+  - Revolver
+  - Rifle
+  - Railgun
   layers:
   - Default
   - TransparentFX

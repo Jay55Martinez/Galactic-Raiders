@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
 
+    /*
     // Adds item to inventory
     public void AddToInventory(GameObject collectable)
     {
@@ -105,11 +106,20 @@ public class GameManager : MonoBehaviour
             ammoCounterText.text = (Convert.ToInt32(ammoCounterText.text) + 1).ToString();
         }
     }
+    */
 
-    // Updates inventory UI
-    void UpdateInventoryUI()
+    // Updates ammo counter
+    public void UpdateAmmoCounter(int amt)
     {
+        Text ammoCounterText = inventory[1].GetComponent<Text>();
+        ammoCounterText.text = (Convert.ToInt32(ammoCounterText.text) + amt).ToString();
+    }
 
+    // Updates heal counter
+    public void UpdateHealCounter(int amt)
+    {
+        Text healCounterText = inventory[3].GetComponent<Text>();
+        healCounterText.text = (Convert.ToInt32(healCounterText.text) + amt).ToString();
     }
 
     // Game over
