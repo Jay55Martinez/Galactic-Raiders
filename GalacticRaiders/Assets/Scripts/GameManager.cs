@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     public int currentHealth; // current health of player
     public Image healthFill; // health UI element
     public Text healthText; // health text element
-    public GameObject[] inventory; // Weapon, ammo, and health inventory
-    public GameObject[] inventoryUI; // inventory UI element
+    public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
+    public GameObject[] inventoryUI = new GameObject[4]; // inventory UI element
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         UpdateCurrencyText();
         currentHealth = maxHealth;
         UpdateHealthUI();
-        inventory = new GameObject[4];
         DontDestroyOnLoad(gameObject);
     }
 
