@@ -81,9 +81,9 @@ public class GunHandling : MonoBehaviour
 
         // animate gun moving back
         if (shooting && bulletsLeft > 0) {
-            transform.localPosition = standardPosition - new Vector3(0, 0, 0.6f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, standardPosition - new Vector3(0, 0, 0.6f), 10f * Time.deltaTime);
         } else {
-            transform.localPosition = standardPosition;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, standardPosition, 10f * Time.deltaTime);
         }
     }
 
