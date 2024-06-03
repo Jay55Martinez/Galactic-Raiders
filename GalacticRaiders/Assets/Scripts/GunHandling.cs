@@ -8,7 +8,7 @@ public class GunHandling : MonoBehaviour
     // Gun Stats
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
+    public int magazineSize, bulletsPerTap, reserveAmmo;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
 
@@ -45,7 +45,7 @@ public class GunHandling : MonoBehaviour
 
         // SetText
         if (ammoText != null)
-            ammoText.SetText(bulletsLeft + "/" + magazineSize);
+            ammoText.SetText(bulletsLeft + "/" + reserveAmmo);
 
         if (reloadText != null) {
             if (bulletsLeft == 0 && !reloading)
@@ -74,7 +74,7 @@ public class GunHandling : MonoBehaviour
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && reserveAmmo != 0)
         {
             Reload();
         }
@@ -118,6 +118,7 @@ public class GunHandling : MonoBehaviour
 
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
+        // Count down shots
         bulletsLeft--;
         bulletsShot--;
 
@@ -146,7 +147,23 @@ public class GunHandling : MonoBehaviour
 
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
+        // remove ammo from reserves
+        if (reserveAmmo >= magazineSize - bulletsLeft)
+        {
+            reserveAmmo -= (magazineSize - bulletsLeft);
+            bulletsLeft = magazineSize;
+        }
+        else if (reserveAmmo < magazineSize - bulletsLeft)
+        {
+            bulletsLeft += reserveAmmo;
+            reserveAmmo = 0;
+        }
         reloading = false;
+    }
+
+    // Adds ammo to the reserve
+    public void AddReserveAmmo(int amount)
+    {
+        reserveAmmo += amount;
     }
 }
