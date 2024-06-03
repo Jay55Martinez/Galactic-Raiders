@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class RobotBehaviour : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
     public float moveSpeed = 10;
     public int damageAmount = 10;
     public float minDistance = 1;
+    public float cooldown = 5;
+
+    private float attackTimer;
     
     // Start is called before the first frame update
     void Start()
     {
         // find player if missing
         if (player == null) {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameObject.FindGameObjectWithTag("Player");
         }
     }
 
@@ -23,15 +26,25 @@ public class RobotBehaviour : MonoBehaviour
     {
         // move towards the player. only do this if the game isn't over!
         float step = moveSpeed * Time.deltaTime;
-        Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+        Vector3 targetPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 
         transform.LookAt(targetPos);
         float dist = (targetPos-transform.position).magnitude; 
         if (dist > minDistance) {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+        } else {
+            if (attackTimer > cooldown) {
+                Attack();
+            }
         }
+        attackTimer += Time.deltaTime;
     }
 
+    // attack the player
+    void Attack() {
+        attackTimer = 0f; // reset the timer
+        // insert player health script stuff here
+    }
 
     // dealing damage to player
     // private void OnCollisionEnter(Collision other) {
@@ -40,4 +53,8 @@ public class RobotBehaviour : MonoBehaviour
     //         playerHealth.TakeDamage(damageAmount);  
     //     }
     // }
+
+    private void OnDestroy() {
+        transform.parent.GetComponent<EnemySpawner>().DecrementEnemies(); // decrease # of active 
+    }
 }
