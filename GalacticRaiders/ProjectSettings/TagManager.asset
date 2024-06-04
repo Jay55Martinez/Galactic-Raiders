@@ -12,6 +12,7 @@ TagManager:
   - Revolver
   - Rifle
   - Railgun
+  - Door
   layers:
   - Default
   - TransparentFX
