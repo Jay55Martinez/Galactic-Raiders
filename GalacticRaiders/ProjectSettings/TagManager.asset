@@ -12,6 +12,7 @@ TagManager:
   - Revolver
   - Rifle
   - Railgun
+  - BigLoot
   layers:
   - Default
   - TransparentFX
