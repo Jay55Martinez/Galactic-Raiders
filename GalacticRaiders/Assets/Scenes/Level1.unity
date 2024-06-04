@@ -45969,6 +45969,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loot
       objectReference: {fileID: 0}
+    - target: {fileID: 6494834229985057210, guid: ae5194015624ea04b8eac96ce654284b, type: 3}
+      propertyPath: m_TagString
+      value: BigLoot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
