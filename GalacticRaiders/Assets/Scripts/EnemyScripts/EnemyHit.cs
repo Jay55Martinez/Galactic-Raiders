@@ -28,12 +28,13 @@ public class EnemyHit : MonoBehaviour
         
     }
 
-    private void OnDestroy() {
+    private void Die() {
         if (transform.parent.CompareTag("EnemySpawner")) {
             transform.parent.GetComponent<EnemySpawner>().DecrementEnemies(); // decrease # of active 
         }
         Instantiate(drop, transform.position + transform.up*.5f, Quaternion.Euler(new Vector3(-90, 0, 0)));
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int dmg) {
@@ -43,7 +44,7 @@ public class EnemyHit : MonoBehaviour
         }
 
         if (health <= 0) {
-            Destroy(gameObject);
+            Die();
         }
     }
 }

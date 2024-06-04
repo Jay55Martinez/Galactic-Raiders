@@ -321,7 +321,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   jumpKey: 32
-  slideKey: 306
+  slideKey: 304
   orientation: {fileID: 9087671285307608506}
 --- !u!1 &3432181766729381821
 GameObject:
@@ -588,6 +588,7 @@ MonoBehaviour:
   timeBetweenShots: 0.1
   magazineSize: 30
   bulletsPerTap: 1
+  reserveAmmo: 0
   allowButtonHold: 1
   fpsCam: {fileID: 4534526151481699500}
   attackPoint: {fileID: 3065523604086411275}

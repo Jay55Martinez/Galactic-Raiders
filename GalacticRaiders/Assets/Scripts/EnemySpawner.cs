@@ -32,8 +32,8 @@ public class EnemySpawner : MonoBehaviour
             waveTimer += Time.deltaTime;
         } else {
             if (activeEnemies == 0) {
-                if (progress.CompareTag("Door")) {
-                    progress.GetComponent<DoorBehaviour>().Open();
+                if (progress != null) {
+                    Progress();
                 }
             }
         }
@@ -62,10 +62,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            if (progress.CompareTag("Door")) {
-                progress.GetComponent<DoorBehaviour>().Close();
+            if (progress != null) {
+                if (progress.CompareTag("Door")) {
+                    progress.GetComponent<DoorBehaviour>().Close();
+                }
             }
             isSpawning = true;
+        }
+    }
+
+    private void Progress() {
+        if (progress.CompareTag("Door")) {
+            progress.GetComponent<DoorBehaviour>().Open();
         }
     }
 }

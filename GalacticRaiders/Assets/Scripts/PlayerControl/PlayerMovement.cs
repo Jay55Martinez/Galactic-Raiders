@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode slideKey = KeyCode.LeftControl;
+    public KeyCode slideKey = KeyCode.LeftShift;
 
     public Transform orientation;
 

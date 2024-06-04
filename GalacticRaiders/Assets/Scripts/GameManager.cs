@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         UpdateCurrencyText();
         currentHealth = maxHealth;
         UpdateHealthUI();
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
     public void UpdateAmmoCounter(int amt)
     {
         Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
-        Debug.Log(ammoCounterText.text);
         //int ammoCount = int.Parse(ammoCounterText.text) + amt;
         ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
     }
@@ -121,7 +120,6 @@ public class GameManager : MonoBehaviour
     public void UpdateHealCounter(int amt)
     {
         Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
-        Debug.Log(healCounterText.text);
         //int healCount = int.Parse(healCounterText.text) + amt;
         healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
     }

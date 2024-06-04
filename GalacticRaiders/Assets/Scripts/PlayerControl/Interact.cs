@@ -33,9 +33,11 @@ public class Interact : MonoBehaviour
                 {
                     FindObjectOfType<GameManager>().UpdateHealCounter(1);
                 }
-                Debug.Log("pickup!");
-                // pick up the item being looked at
-                Destroy(lookAt);
+                if (lookAt.CompareTag("Loot")) {
+                    lookAt.GetComponent<LootBehaviour>().Die();
+                } else {
+                    Destroy(lookAt);
+                }
             }
         }
     }

@@ -17,8 +17,9 @@ public class LootBehaviour : MonoBehaviour
         transform.Rotate(Vector3.up, 90f * Time.deltaTime);
     }
 
-    private void OnDestroy() {
+    public void Die() {
         // add currency to gamemanager
         FindObjectOfType<GameManager>().IncreaseCurrency(worth);
+        Destroy(gameObject);
     }
 }
