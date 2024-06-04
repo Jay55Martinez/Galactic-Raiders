@@ -20,7 +20,7 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (lookAt != null) {
-                if (lookAt.CompareTag("BigLoot"))
+                if (lookAt.CompareTag("ControlPanel"))
                 {
                     FindObjectOfType<GameManager>().LevelBeat();
                 }
@@ -43,7 +43,7 @@ public class Interact : MonoBehaviour
     void FixedUpdate() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, lootDistance)) {
-            if (hit.collider.CompareTag("BigLoot") || hit.collider.CompareTag("Loot") || hit.collider.CompareTag("Ammo") || hit.collider.CompareTag("Heal")) {
+            if (hit.collider.CompareTag("ControlPanel") || hit.collider.CompareTag("Loot") || hit.collider.CompareTag("Ammo") || hit.collider.CompareTag("Heal")) {
                 lookAt = hit.collider.gameObject;
                 pickupText.text = "Press 'E' to pickup";
                 pickupText.gameObject.SetActive(true);
