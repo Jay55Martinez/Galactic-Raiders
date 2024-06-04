@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Image healthFill; // health UI element
     public Text healthText; // health text element
     public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
-    public GameObject[] inventoryUI = new GameObject[4]; // inventory UI element
+    public Image[] inventoryUI = new Image[4]; // inventory UI element
 
     // Start is called before the first frame update
     void Start()
@@ -111,15 +111,19 @@ public class GameManager : MonoBehaviour
     // Updates ammo counter
     public void UpdateAmmoCounter(int amt)
     {
-        Text ammoCounterText = inventory[1].GetComponent<Text>();
-        ammoCounterText.text = (Convert.ToInt32(ammoCounterText.text) + amt).ToString();
+        Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
+        Debug.Log(ammoCounterText.text);
+        //int ammoCount = int.Parse(ammoCounterText.text) + amt;
+        ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
     }
 
     // Updates heal counter
     public void UpdateHealCounter(int amt)
     {
-        Text healCounterText = inventory[3].GetComponent<Text>();
-        healCounterText.text = (Convert.ToInt32(healCounterText.text) + amt).ToString();
+        Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
+        Debug.Log(healCounterText.text);
+        //int healCount = int.Parse(healCounterText.text) + amt;
+        healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
     }
 
     // Game over
