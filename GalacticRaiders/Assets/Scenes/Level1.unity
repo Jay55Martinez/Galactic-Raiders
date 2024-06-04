@@ -38393,6 +38393,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.1560364, y: 3.0000002, z: 5.1560354}
   m_Center: {x: -2.5780182, y: 1.5000001, z: -2.4219842}
+--- !u!114 &350483351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2457398511124946005, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 689630934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354214439
 GameObject:
   m_ObjectHideFlags: 0
@@ -42580,6 +42591,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023358769360562529, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+      propertyPath: m_Text
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7346989317367559625, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -43967,6 +43982,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842512813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2522193873645059134, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 689630934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &850232309
 Mesh:
   m_ObjectHideFlags: 0
@@ -44297,6 +44323,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &899751528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5749393210065259913, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 689630934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &907230378
 Mesh:
   m_ObjectHideFlags: 0
@@ -45489,6 +45526,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1073803761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6208702991505766885, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 689630934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1124474254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1167530832554912, guid: 14be2c847c5873f40af6081f07f0bc27, type: 3}
@@ -48223,6 +48271,26 @@ PrefabInstance:
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 689630936}
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: inventoryUI.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: inventoryUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 842512813}
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: inventoryUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 899751528}
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: inventoryUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 350483351}
+    - target: {fileID: 4140951475913642012, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
+      propertyPath: inventoryUI.Array.data[3]
+      value: 
+      objectReference: {fileID: 1073803761}
     - target: {fileID: 5335917963594226170, guid: c44527fdfa4f5a245bbab5f608f2179a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
