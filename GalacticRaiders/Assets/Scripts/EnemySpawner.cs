@@ -31,7 +31,11 @@ public class EnemySpawner : MonoBehaviour
             }
             waveTimer += Time.deltaTime;
         } else {
-            // the room has been completed, unlock door / progress level
+            if (activeEnemies == 0) {
+                if (progress.CompareTag("Door")) {
+                    progress.GetComponent<DoorBehaviour>().Open();
+                }
+            }
         }
     }
 
@@ -58,6 +62,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
+            if (progress.CompareTag("Door")) {
+                progress.GetComponent<DoorBehaviour>().Close();
+            }
             isSpawning = true;
         }
     }
