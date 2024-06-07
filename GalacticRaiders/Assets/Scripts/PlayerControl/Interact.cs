@@ -22,7 +22,7 @@ public class Interact : MonoBehaviour
             if (lookAt != null) {
                 if (lookAt.CompareTag("ControlPanel"))
                 {
-                    FindObjectOfType<GameManager>().LevelBeat();
+                    FindObjectOfType<LevelManager>().LevelBeat();
                 }
                 else if (lookAt.CompareTag("Ammo"))
                 {
