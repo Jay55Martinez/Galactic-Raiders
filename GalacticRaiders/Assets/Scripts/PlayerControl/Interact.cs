@@ -33,9 +33,11 @@ public class Interact : MonoBehaviour
                 {
                     FindObjectOfType<GameManager>().UpdateHealCounter(1);
                 }
-                if (lookAt.CompareTag("Loot")) {
+                else if (lookAt.CompareTag("Loot")) {
                     lookAt.GetComponent<LootBehaviour>().Die();
-                } else {
+                }
+                // add gun pickup
+                else {
                     Destroy(lookAt);
                 }
             }

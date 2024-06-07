@@ -24,6 +24,7 @@ public class GunHandling : MonoBehaviour
     // Graphics
     public GameObject muzzleFlash, bulletHole;
     public TextMeshProUGUI ammoText, reloadText;
+    public TrailRenderer BulletTrail;
 
     // recoil anim
     private Vector3 standardPosition; 
@@ -107,16 +108,21 @@ public class GunHandling : MonoBehaviour
         // RayCasting
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
+            // Adding bullet trails
+            TrailRenderer trail = Instantiate(BulletTrail, attackPoint.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, rayHit));
+
             if (rayHit.collider.CompareTag("Enemy"))
             {
                 rayHit.collider.gameObject.GetComponent<EnemyHit>().TakeDamage(damage);
-            } else {
+            } /*else {
                 // only place bullethole if there are no enemies
                 Instantiate(bulletHole, rayHit.point, Quaternion.Euler(0, 180, 0)); // this only works on walls in certain directions
-            }
+            }*/
         }
 
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+
 
         // Count down shots
         bulletsLeft--;
@@ -133,6 +139,27 @@ public class GunHandling : MonoBehaviour
         // audio
         AudioSource.PlayClipAtPoint(fireSFX, transform.position);
     }
+
+    private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPosition = trail.transform.position;
+
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
+            time += Time.deltaTime / trail.time;
+
+            yield return null;
+        }
+
+        trail.transform.position = hit.point;
+        Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
+
+        Destroy(trail.gameObject, trail.time);
+    }
+
 
     private void ResetShot()
     {

@@ -178,9 +178,10 @@ GameObject:
   - component: {fileID: 33751012955609102}
   - component: {fileID: 23695284218615062}
   - component: {fileID: 4641600303841422414}
+  - component: {fileID: -2045940883258924390}
   m_Layer: 0
   m_Name: Rifle_Laser_Pickup
-  m_TagString: Untagged
+  m_TagString: GunPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,3 +286,15 @@ MonoBehaviour:
   reloadText: {fileID: 0}
   fireSFX: {fileID: 8300000, guid: f793b489f8d44f14193404685deb885c, type: 3}
   reloadSFX: {fileID: 8300000, guid: ec29eaa2552585f40a9e770bc2b1ccf3, type: 3}
+--- !u!114 &-2045940883258924390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793815161702332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41a1844592670b4f870a3c13ed6dad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
