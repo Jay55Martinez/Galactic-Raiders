@@ -127,7 +127,7 @@ public class GunHandling : MonoBehaviour
         // Count down shots
         bulletsLeft--;
         bulletsShot--;
-        FindObjectOfType<GameManager>().UpdateAmmoCounter(-1);
+        FindObjectOfType<LevelManager>().UpdateAmmoCounter(-1);
 
         Invoke("ResetShot", timeBetweenShooting);
 

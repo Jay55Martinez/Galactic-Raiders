@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         levelCurrency = 0;
-        UpdateCurrencyText();
+        // UpdateCurrencyText();
         // DontDestroyOnLoad(gameObject);
     }
 
@@ -28,16 +28,16 @@ public class GameManager : MonoBehaviour
         
     }
 
-    // Increases level currency
-    public void IncreaseCurrency(int amt) {
-        levelCurrency += amt;
-        UpdateCurrencyText();
-    }
+    // // Increases level currency
+    // public void IncreaseCurrency(int amt) {
+    //     levelCurrency += amt;
+    //     UpdateCurrencyText();
+    // }
 
-    // Updates currency text
-    void UpdateCurrencyText() {
-        currencyText.text = "Currency: " + levelCurrency;
-    }
+    // // Updates currency text
+    // void UpdateCurrencyText() {
+    //     currencyText.text = "Currency: " + levelCurrency;
+    // }
 
     /*
     // Adds item to inventory
@@ -73,19 +73,19 @@ public class GameManager : MonoBehaviour
     }
     */
 
-    // Updates ammo counter
-    public void UpdateAmmoCounter(int amt)
-    {
-        Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
-        //int ammoCount = int.Parse(ammoCounterText.text) + amt;
-        ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
-    }
+    // // Updates ammo counter
+    // public void UpdateAmmoCounter(int amt)
+    // {
+    //     Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
+    //     //int ammoCount = int.Parse(ammoCounterText.text) + amt;
+    //     ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
+    // }
 
-    // Updates heal counter
-    public void UpdateHealCounter(int amt)
-    {
-        Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
-        //int healCount = int.Parse(healCounterText.text) + amt;
-        healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
-    }
+    // // Updates heal counter
+    // public void UpdateHealCounter(int amt)
+    // {
+    //     Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
+    //     //int healCount = int.Parse(healCounterText.text) + amt;
+    //     healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
+    // }
 }

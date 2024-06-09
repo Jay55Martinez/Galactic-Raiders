@@ -43623,6 +43623,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: Level2
+  levelCurrency: 0
+  currencyText: {fileID: 689630936}
+  inventory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  inventoryUI:
+  - {fileID: 842512813}
+  - {fileID: 899751528}
+  - {fileID: 350483351}
+  - {fileID: 1073803761}
 --- !u!4 &612378823
 Transform:
   m_ObjectHideFlags: 0
@@ -85274,6 +85286,7 @@ SceneRoots:
   - {fileID: 1902891126}
   - {fileID: 829019728}
   - {fileID: 1375583811}
+  - {fileID: 612378823}
   - {fileID: 689630934}
   - {fileID: 228381951}
   - {fileID: 1888198650}
@@ -85291,4 +85304,3 @@ SceneRoots:
   - {fileID: 1148235532}
   - {fileID: 750689542}
   - {fileID: 1764682312}
-  - {fileID: 612378823}

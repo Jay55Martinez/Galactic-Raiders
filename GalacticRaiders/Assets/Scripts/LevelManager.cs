@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // this class is used for loading & losing levels
 public class LevelManager : MonoBehaviour
@@ -9,10 +10,18 @@ public class LevelManager : MonoBehaviour
     public static bool gameOver; // game state bool
     public string nextLevel; // next level
 
+    // inventory
+    public int levelCurrency; // track the currency collected this level
+    public Text currencyText; // currency text element
+    public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
+    public Image[] inventoryUI = new Image[4]; // inventory UI element
+
     // Start is called before the first frame update
     void Start()
     {
         gameOver = false;
+        levelCurrency = 0;
+        UpdateCurrencyText();
     }
 
     // Update is called once per frame
@@ -50,5 +59,32 @@ public class LevelManager : MonoBehaviour
     private void LoadNextLevel()
     {
         SceneManager.LoadScene(nextLevel);
+    }
+
+    // Increases level currency
+    public void IncreaseCurrency(int amt) {
+        levelCurrency += amt;
+        UpdateCurrencyText();
+    }
+
+    // Updates currency text
+    void UpdateCurrencyText() {
+        currencyText.text = "Currency: " + levelCurrency;
+    }
+
+    // Updates ammo counter
+    public void UpdateAmmoCounter(int amt)
+    {
+        Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
+        //int ammoCount = int.Parse(ammoCounterText.text) + amt;
+        ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
+    }
+
+    // Updates heal counter
+    public void UpdateHealCounter(int amt)
+    {
+        Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
+        //int healCount = int.Parse(healCounterText.text) + amt;
+        healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
     }
 }

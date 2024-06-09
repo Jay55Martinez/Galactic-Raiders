@@ -19,7 +19,7 @@ public class LootBehaviour : MonoBehaviour
 
     public void Die() {
         // add currency to gamemanager
-        FindObjectOfType<GameManager>().IncreaseCurrency(worth);
+        FindObjectOfType<LevelManager>().IncreaseCurrency(worth);
         Destroy(gameObject);
     }
 }
