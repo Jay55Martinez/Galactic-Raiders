@@ -109,8 +109,10 @@ public class GunHandling : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
             // Adding bullet trails
-            TrailRenderer trail = Instantiate(BulletTrail, attackPoint.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, rayHit));
+            if (BulletTrail != null) {
+                TrailRenderer trail = Instantiate(BulletTrail, attackPoint.position, Quaternion.identity);
+                StartCoroutine(SpawnTrail(trail, rayHit));
+            }
 
             if (rayHit.collider.CompareTag("Enemy"))
             {

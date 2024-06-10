@@ -9,23 +9,47 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public int totalCurrency; // tracks the player's currency throughout levels
-    public int levelCurrency; // track the currency collected this level
-    public Text currencyText; // currency text element
-    public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
-    public Image[] inventoryUI = new Image[4]; // inventory UI element
+
+    // game progress
+    public static int gameProgress; // which levels have the player beaten?
+    public static int levelAmt; // how many levels are there?
+    public static bool isBase; // is the current level an intermediary level?
+    private static bool hasPistol;
+    private static bool hasRifle;
+    private static bool hasRailgun;
+
+    void Awake() {
+        isBase = false;
+        gameProgress = 1;  
+        levelAmt = 2;
+        // set all player guns to false
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        levelCurrency = 0;
+        // levelCurrency = 0;
         // UpdateCurrencyText();
-        // DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public static string NextLevel() { // what is the name of the next level?
+        if (!isBase) {
+            isBase = true;
+            return "Base";
+        } else if (gameProgress <= levelAmt) {
+            gameProgress++;
+            isBase = false;
+            return "Level" + gameProgress.ToString();
+        } else {
+            return null;
+        }
     }
 
     // // Increases level currency
@@ -88,4 +112,7 @@ public class GameManager : MonoBehaviour
     //     //int healCount = int.Parse(healCounterText.text) + amt;
     //     healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
     // }
+
+
+
 }

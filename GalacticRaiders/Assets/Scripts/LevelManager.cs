@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static bool gameOver; // game state bool
-    public string nextLevel; // next level
+    private string nextLevel; // next level
 
     // inventory
     public int levelCurrency; // track the currency collected this level
@@ -16,12 +16,16 @@ public class LevelManager : MonoBehaviour
     public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
     public Image[] inventoryUI = new Image[4]; // inventory UI element
 
+    public AudioClip winSFX;
+    private Transform player;
+
     // Start is called before the first frame update
     void Start()
     {
         gameOver = false;
         levelCurrency = 0;
         UpdateCurrencyText();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -43,6 +47,9 @@ public class LevelManager : MonoBehaviour
     public void LevelBeat()
     {
         gameOver = true;
+        AudioSource.PlayClipAtPoint(winSFX, player.position);
+        nextLevel = GameManager.NextLevel();
+        Debug.Log(nextLevel);
         if (!string.IsNullOrEmpty(nextLevel))
         {
             Invoke("LoadNextLevel", 2);

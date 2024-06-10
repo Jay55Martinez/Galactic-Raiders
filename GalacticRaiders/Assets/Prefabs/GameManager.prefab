@@ -44,13 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b02e98552bfda24bba8fe27e2a977ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: 
   totalCurrency: 0
   levelCurrency: 0
   currencyText: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 0
-  healthFill: {fileID: 0}
-  healthText: {fileID: 0}
   inventory: []
-  inventoryUI: []
+  inventoryUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

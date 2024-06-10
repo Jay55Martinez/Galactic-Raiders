@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 401689314650736610}
   - component: {fileID: 8965781374331264408}
   - component: {fileID: 2587394337830042169}
+  - component: {fileID: 6159959694805489228}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -323,6 +324,22 @@ MonoBehaviour:
   jumpKey: 32
   slideKey: 304
   orientation: {fileID: 9087671285307608506}
+--- !u!114 &6159959694805489228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548569094054631967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416a6656f9ac3684992529cc3b9d107b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
 --- !u!1 &3432181766729381821
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun_Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 1590080179936372, guid: 63a05b38d307b10488a7ebbb73b7f178, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4959576490554332, guid: 63a05b38d307b10488a7ebbb73b7f178, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -695,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1793815161702332, guid: ec291e63f4e6ef34bacb96ff6e4ad6be, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4434898408097148, guid: ec291e63f4e6ef34bacb96ff6e4ad6be, type: 3}
       propertyPath: m_LocalPosition.x
