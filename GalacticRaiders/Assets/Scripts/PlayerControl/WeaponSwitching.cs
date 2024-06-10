@@ -6,10 +6,18 @@ public class WeaponSwitching : MonoBehaviour
 {
     // the selected weapon
     public int currentWeapon = 0;
+    private int prevWeapon;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentWeapon = 3; // out of bounds, nothing will show
+        for (int i = 0; i < GameManager.weapons.Length; i++) {
+            if (GameManager.weapons[i]) {
+                currentWeapon = i;
+                break;
+            }
+        }
         SelectWeapon();
     }
 
@@ -17,8 +25,18 @@ public class WeaponSwitching : MonoBehaviour
     void Update()
     {
 
-        int prevWeapon = currentWeapon;
+        prevWeapon = currentWeapon;
 
+        ScrollSelect();
+        KeySelect();
+
+        if (prevWeapon != currentWeapon)
+        {
+            SelectWeapon();
+        }
+    }
+
+    void ScrollSelect() {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             if (currentWeapon >= transform.childCount - 1)
@@ -26,6 +44,7 @@ public class WeaponSwitching : MonoBehaviour
             else
                 currentWeapon++;
         }
+
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             if (currentWeapon <= 0)
@@ -33,10 +52,19 @@ public class WeaponSwitching : MonoBehaviour
             else
                 currentWeapon--;
         }
+    }
 
-        if (prevWeapon != currentWeapon)
-        {
-            SelectWeapon();
+    void KeySelect() {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && GameManager.weapons[0]) {
+            currentWeapon = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && GameManager.weapons[1]) {
+            currentWeapon = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && GameManager.weapons[2]) {
+            currentWeapon = 2;
         }
     }
 

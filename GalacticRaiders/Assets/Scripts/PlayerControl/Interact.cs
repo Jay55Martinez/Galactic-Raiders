@@ -36,6 +36,9 @@ public class Interact : MonoBehaviour
                 else if (lookAt.CompareTag("Loot")) {
                     lookAt.GetComponent<LootBehaviour>().Die();
                 }
+                else if (lookAt.CompareTag("Purchase")) {
+                    lookAt.GetComponent<GunPurchaseBehaviour>().Purchase();
+                }
                 // add gun pickup
                 else {
                     Destroy(lookAt);
@@ -47,9 +50,20 @@ public class Interact : MonoBehaviour
     void FixedUpdate() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, lootDistance)) {
-            if (hit.collider.CompareTag("ControlPanel") || hit.collider.CompareTag("Loot") || hit.collider.CompareTag("Ammo") || hit.collider.CompareTag("Heal")) {
+            if (hit.collider.CompareTag("Loot") || hit.collider.CompareTag("Ammo") || hit.collider.CompareTag("Heal")) {
                 lookAt = hit.collider.gameObject;
                 pickupText.text = "Press 'E' to pickup";
+                pickupText.gameObject.SetActive(true);
+            }
+            else if (hit.collider.CompareTag("ControlPanel")) {
+                lookAt = hit.collider.gameObject;
+                pickupText.text = "Press 'E' to warp out";
+                pickupText.gameObject.SetActive(true);
+            }
+            else if (hit.collider.CompareTag("Purchase")) {
+                lookAt = hit.collider.gameObject;
+                pickupText.text = "Press 'E' to purchase for " + 
+                    lookAt.GetComponent<GunPurchaseBehaviour>().price;
                 pickupText.gameObject.SetActive(true);
             }
             else 

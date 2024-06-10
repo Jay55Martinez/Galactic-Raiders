@@ -85121,6 +85121,14 @@ PrefabInstance:
       propertyPath: pickupText
       value: 
       objectReference: {fileID: 1345190444}
+    - target: {fileID: 1313586893198544011, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105346787864534295, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3432181766729381821, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: m_Name
       value: PlayerContainer
@@ -85210,6 +85218,10 @@ PrefabInstance:
       propertyPath: inventoryUI.Array.data[3]
       value: 
       objectReference: {fileID: 1073803761}
+    - target: {fileID: 2598226389032082148, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4866147912209687803, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
