@@ -36,6 +36,10 @@ public class GunHandling : MonoBehaviour
 
     public void Start()
     {
+        if (fpsCam == null)
+        {
+            fpsCam = Camera.main;
+        }
         bulletsLeft = magazineSize;
         readyToShoot = true;
         standardPosition = transform.localPosition;

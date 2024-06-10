@@ -39,6 +39,10 @@ public class Interact : MonoBehaviour
                 else if (lookAt.CompareTag("Purchase")) {
                     lookAt.GetComponent<GunPurchaseBehaviour>().Purchase();
                 }
+                else if (lookAt.CompareTag("Button"))
+                {
+                    lookAt.GetComponent<ButtonDoor>().OpenDoor();
+                }
                 // add gun pickup
                 else {
                     Destroy(lookAt);
@@ -65,6 +69,11 @@ public class Interact : MonoBehaviour
                 pickupText.text = "Press 'E' to purchase for " + 
                     lookAt.GetComponent<GunPurchaseBehaviour>().price;
                 pickupText.gameObject.SetActive(true);
+            }
+            else if (hit.collider.CompareTag("Button"))
+            {
+                lookAt = hit.collider.gameObject;
+                pickupText.text = "Press 'E' to open door";
             }
             else 
             {

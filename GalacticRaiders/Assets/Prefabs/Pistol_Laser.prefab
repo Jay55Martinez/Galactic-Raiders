@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4994942694739080}
   - component: {fileID: 33363488889797108}
   - component: {fileID: 23765782289798318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_Revolver_Hammer_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,13 +95,13 @@ GameObject:
   - component: {fileID: 33261766968656114}
   - component: {fileID: 23872223288961364}
   - component: {fileID: 1054469009709207105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pistol_Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4510483257539040
 Transform:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ Transform:
   - {fileID: 4994942694739080}
   - {fileID: 4195821617724358}
   - {fileID: 2451611071765771710}
+  - {fileID: 1134834163973190446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33261766968656114
@@ -198,11 +199,10 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
-  muzzleFlash: {fileID: 7997356352633904969, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
   bulletHole: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   ammoText: {fileID: 0}
   reloadText: {fileID: 0}
-  BulletTrail: {fileID: 0}
+  BulletTrail: {fileID: 2290688568731426092, guid: 8fda858560cf043e9b47ff50216dfe91, type: 3}
   fireSFX: {fileID: 8300000, guid: f793b489f8d44f14193404685deb885c, type: 3}
   reloadSFX: {fileID: 8300000, guid: ec29eaa2552585f40a9e770bc2b1ccf3, type: 3}
 --- !u!1 &1980029415594820
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 4267970829357144}
   - component: {fileID: 33587363341630392}
   - component: {fileID: 23714054533969118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_Revolver_Cylinder_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 4195821617724358}
   - component: {fileID: 33131333097073154}
   - component: {fileID: 23772692730551090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_Revolver_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2451611071765771710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,3 +402,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4510483257539040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5374155316322640924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4510483257539040}
+    m_Modifications:
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.10031462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5483744
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997356352633904969, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+      propertyPath: m_Name
+      value: MuzzleFlash
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+--- !u!4 &1134834163973190446 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4984192181450921778, guid: 9c7d014b7f66241dd866d5ba6a3efb73, type: 3}
+  m_PrefabInstance: {fileID: 5374155316322640924}
+  m_PrefabAsset: {fileID: 0}
