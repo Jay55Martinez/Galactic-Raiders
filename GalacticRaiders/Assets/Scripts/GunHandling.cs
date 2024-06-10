@@ -22,9 +22,10 @@ public class GunHandling : MonoBehaviour
     public LayerMask whatIsEnemy;
 
     // Graphics
-    public GameObject muzzleFlash, bulletHole;
+    public GameObject bulletHole;
     public TextMeshProUGUI ammoText, reloadText;
     public TrailRenderer BulletTrail;
+    ParticleSystem muzzleFlash;
 
     // recoil anim
     private Vector3 standardPosition; 
@@ -38,6 +39,7 @@ public class GunHandling : MonoBehaviour
         bulletsLeft = magazineSize;
         readyToShoot = true;
         standardPosition = transform.localPosition;
+        muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>();
     }
 
     public void Update()
@@ -84,6 +86,7 @@ public class GunHandling : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             bulletsShot = bulletsPerTap;
+            muzzleFlash.Play();
             Shoot();
         }
 
@@ -123,8 +126,7 @@ public class GunHandling : MonoBehaviour
             }*/
         }
 
-        Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-
+        // Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
         // Count down shots
         bulletsLeft--;
