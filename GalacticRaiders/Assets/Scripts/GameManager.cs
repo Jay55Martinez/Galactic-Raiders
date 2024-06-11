@@ -14,12 +14,18 @@ public class GameManager : MonoBehaviour
     public static int gameProgress; // which levels have the player beaten?
     public static int levelAmt; // how many levels are there?
     public static bool isBase; // is the current level an intermediary level?
-    public static bool[] weapons = {true, false, false};
+    public static bool[] weapons = {false, false, false};
+    public bool devMode;
 
     void Awake() {
         isBase = false;
         gameProgress = 1;  
         levelAmt = 3;
+        if (devMode) {
+            weapons[0] = true;
+            weapons[1] = true;
+            weapons[2] = true;
+        }
         // set all player guns to false
     }
 

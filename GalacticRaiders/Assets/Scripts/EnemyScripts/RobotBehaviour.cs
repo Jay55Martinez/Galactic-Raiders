@@ -42,14 +42,7 @@ public class RobotBehaviour : MonoBehaviour
     // attack the player
     void Attack() {
         attackTimer = 0f; // reset the timer
-        // insert player health script stuff here
+        player.GetComponent<PlayerHealth>().Damage(5);
     }
 
-    // dealing damage to player
-    // private void OnCollisionEnter(Collision other) {
-    //     if (other.gameObject.CompareTag("Player")) { 
-    //         var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-    //         playerHealth.TakeDamage(damageAmount);  
-    //     }
-    // }
 }
