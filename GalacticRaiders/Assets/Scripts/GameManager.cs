@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static int levelAmt; // how many levels are there?
     public static bool isBase; // is the current level an intermediary level?
     public static bool[] weapons = {false, false, false};
-    public bool devMode;
+    public bool devMode = true;
 
     void Awake() {
         isBase = false;

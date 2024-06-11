@@ -40066,7 +40066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &228381950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45848,6 +45848,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &689630938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7541929824423704973, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 689630934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &700182833
@@ -83356,7 +83367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1888198648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -86969,6 +86980,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2895567594740791755, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
+      propertyPath: healCounterText
+      value: 
+      objectReference: {fileID: 689630938}
     - target: {fileID: 3105346787864534295, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: m_IsActive
       value: 0
