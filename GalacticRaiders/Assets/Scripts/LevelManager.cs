@@ -83,7 +83,6 @@ public class LevelManager : MonoBehaviour
     public void UpdateAmmoCounter(int amt)
     {
         Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
-        //int ammoCount = int.Parse(ammoCounterText.text) + amt;
         ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
     }
 
