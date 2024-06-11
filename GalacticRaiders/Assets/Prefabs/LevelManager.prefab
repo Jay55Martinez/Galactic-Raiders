@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea511c84b648eda408621d57fa88534f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: Level2
   levelCurrency: 0
   currencyText: {fileID: 0}
   inventory:
@@ -71,7 +70,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 69216b36519d23f45aed0d7dfdf15d0f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
