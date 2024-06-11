@@ -190,7 +190,7 @@ MonoBehaviour:
   range: 150
   reloadTime: 4
   timeBetweenShots: 1
-  magazineSize: 6
+  magazineSize: 9999
   bulletsPerTap: 0
   reserveAmmo: 30
   allowButtonHold: 1
