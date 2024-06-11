@@ -135,7 +135,10 @@ public class GunHandling : MonoBehaviour
         // Count down shots
         bulletsLeft--;
         bulletsShot--;
-        FindObjectOfType<LevelManager>().UpdateAmmoCounter(-1);
+        if (CompareTag("Rifle"))
+        {
+            FindObjectOfType<LevelManager>().UpdateAmmoCounter(-1);
+        }
 
         Invoke("ResetShot", timeBetweenShooting);
 
