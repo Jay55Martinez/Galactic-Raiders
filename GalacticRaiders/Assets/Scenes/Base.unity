@@ -657,6 +657,10 @@ PrefabInstance:
       propertyPath: pickupText
       value: 
       objectReference: {fileID: 596768255}
+    - target: {fileID: 3105346787864534295, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3432181766729381821, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: m_Name
       value: PlayerContainer
@@ -2579,6 +2583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 0
   price: 50
+  purchaseSFX: {fileID: 8300000, guid: 93f2d1a1b6ed71648a0522bd421e05ce, type: 3}
+  failPurchaseSFX: {fileID: 8300000, guid: c635af886095eb4459a0573553c616ea, type: 3}
 --- !u!65 &33261767658433128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2654,6 +2660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 1
   price: 50
+  purchaseSFX: {fileID: 8300000, guid: 93f2d1a1b6ed71648a0522bd421e05ce, type: 3}
+  failPurchaseSFX: {fileID: 8300000, guid: c635af886095eb4459a0573553c616ea, type: 3}
 --- !u!65 &33751014649977055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2697,6 +2705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 2
   price: 50
+  purchaseSFX: {fileID: 8300000, guid: 93f2d1a1b6ed71648a0522bd421e05ce, type: 3}
+  failPurchaseSFX: {fileID: 8300000, guid: c635af886095eb4459a0573553c616ea, type: 3}
 --- !u!65 &33793616441631065
 BoxCollider:
   m_ObjectHideFlags: 0

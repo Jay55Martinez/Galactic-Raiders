@@ -68,8 +68,12 @@ public class Interact : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Purchase")) {
                 lookAt = hit.collider.gameObject;
-                pickupText.text = "Press 'E' to purchase for " + 
-                    lookAt.GetComponent<GunPurchaseBehaviour>().price;
+                int price = lookAt.GetComponent<GunPurchaseBehaviour>().price;
+                if (price == 0) {
+                    pickupText.text = "Press 'E' to pick up";
+                } else {
+                    pickupText.text = "Press 'E' to purchase for " + price;
+                }
                 pickupText.gameObject.SetActive(true);
             }
             else if (hit.collider.CompareTag("Button"))

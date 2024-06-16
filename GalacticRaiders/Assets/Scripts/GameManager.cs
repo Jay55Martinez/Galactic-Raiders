@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
             weapons[0] = true;
             weapons[1] = true;
             weapons[2] = true;
+            totalCurrency = 150;
         }
         // set all player guns to false
     }

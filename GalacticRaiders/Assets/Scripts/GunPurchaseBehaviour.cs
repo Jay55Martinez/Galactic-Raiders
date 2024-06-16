@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GunPurchaseBehaviour : MonoBehaviour
 {
-    public int slot;
-    public int price;
+    public int slot = 0;
+    public int price = 0;
+
+    public AudioClip purchaseSFX;
+    public AudioClip failPurchaseSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,15 @@ public class GunPurchaseBehaviour : MonoBehaviour
         if (GameManager.totalCurrency >= price) {
             GameManager.weapons[slot] = true;
             Destroy(gameObject);
+            if (purchaseSFX != null) {
+                AudioSource.PlayClipAtPoint(purchaseSFX, transform.position);
+            }
+
+            GameManager.totalCurrency -= price; 
+        } else {
+            if (failPurchaseSFX != null) {
+                AudioSource.PlayClipAtPoint(failPurchaseSFX, transform.position);
+            }
         }
     }
 }

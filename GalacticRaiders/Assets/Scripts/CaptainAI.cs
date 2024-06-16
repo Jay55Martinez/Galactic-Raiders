@@ -49,7 +49,6 @@ public class CaptainAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Vector3.Distance(transform.position, nextDestination.position));
         distToPlayer = Vector3.Distance(transform.position, player.transform.position);
         switch (currentState) {
             case FSMStates.Patrol: 
@@ -84,7 +83,7 @@ public class CaptainAI : MonoBehaviour
     void UpdateChaseState() {
         anim.SetInteger("animState", 2);
         agent.SetDestination(player.transform.position);
-        agent.stoppingDistance = talkDistance - 0.01f;
+        agent.stoppingDistance = talkDistance - 0.01f;  
 
         if (distToPlayer < talkDistance) {
             currentState = FSMStates.Talk;

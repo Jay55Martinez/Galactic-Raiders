@@ -42518,6 +42518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 0
   price: 0
+  purchaseSFX: {fileID: 0}
+  failPurchaseSFX: {fileID: 0}
 --- !u!23 &461695037
 MeshRenderer:
   m_ObjectHideFlags: 0
