@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CaptainAI : MonoBehaviour
 {
     public enum FSMStates {
-        Idle, 
         Patrol, // going through wander points
         Chase, // following the player
         Talk // talking to the player
@@ -30,6 +29,7 @@ public class CaptainAI : MonoBehaviour
     public GameObject player;
 
     NavMeshAgent agent;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -37,16 +37,19 @@ public class CaptainAI : MonoBehaviour
         if (player == null) {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
         FindNextPoint();
 
         currentState = FSMStates.Patrol;
 
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Vector3.Distance(transform.position, nextDestination.position));
         distToPlayer = Vector3.Distance(transform.position, player.transform.position);
         switch (currentState) {
             case FSMStates.Patrol: 
@@ -64,9 +67,10 @@ public class CaptainAI : MonoBehaviour
     }
 
     void UpdatePatrolState() {
+        anim.SetInteger("animState", 2);
         agent.SetDestination(nextDestination.position);
 
-        if (Vector3.Distance(transform.position, nextDestination.position) < 1) {
+        if (Vector3.Distance(transform.position, nextDestination.position) < agent.stoppingDistance) {
             FindNextPoint();
         }
 
@@ -78,21 +82,30 @@ public class CaptainAI : MonoBehaviour
     }
 
     void UpdateChaseState() {
+        anim.SetInteger("animState", 2);
         agent.SetDestination(player.transform.position);
+        agent.stoppingDistance = talkDistance - 0.01f;
 
         if (distToPlayer < talkDistance) {
             currentState = FSMStates.Talk;
             InvokeRepeating("NextVoiceLine", 2f, 2f);
         } else if (distToPlayer > chaseDistance) {
             currentState = FSMStates.Patrol;
+            FindNextPoint();
         }
 
         textBox.gameObject.SetActive(false);
     }
 
     void UpdateTalkState() {
+        anim.SetInteger("animState", 1);
         textBox.gameObject.SetActive(true);
         textBox.text = voicelines[textIndex];
+
+        if (distToPlayer > talkDistance) {
+            currentState = FSMStates.Chase;
+            textIndex = 0;
+        }
     }
 
     void FindNextPoint() {
