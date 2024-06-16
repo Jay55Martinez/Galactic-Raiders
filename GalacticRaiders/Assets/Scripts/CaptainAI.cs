@@ -14,13 +14,14 @@ public class CaptainAI : MonoBehaviour
 
     public FSMStates currentState;
 
+    [Header("Voicelines")]
     public string[] voicelines;
     public Text textBox;
     public int textIndex;
 
+    [Header("Navigation")]
     public GameObject[] wanderPoints;
     public Transform nextDestination;
-
     public float chaseDistance = 5;
     public float talkDistance = 3;
     private int currentDestinationIndex = 0;
