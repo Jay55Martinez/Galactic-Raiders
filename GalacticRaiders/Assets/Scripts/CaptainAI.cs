@@ -69,8 +69,9 @@ public class CaptainAI : MonoBehaviour
     void UpdatePatrolState() {
         anim.SetInteger("animState", 2);
         agent.SetDestination(nextDestination.position);
+        agent.stoppingDistance = 0;
 
-        if (Vector3.Distance(transform.position, nextDestination.position) < agent.stoppingDistance) {
+        if (Vector3.Distance(transform.position, nextDestination.position) < 1) {
             FindNextPoint();
         }
 
@@ -84,7 +85,7 @@ public class CaptainAI : MonoBehaviour
     void UpdateChaseState() {
         anim.SetInteger("animState", 2);
         agent.SetDestination(player.transform.position);
-        agent.stoppingDistance = talkDistance - 0.01f;  
+        agent.stoppingDistance = 0;  
 
         if (distToPlayer < talkDistance) {
             currentState = FSMStates.Talk;
@@ -99,6 +100,8 @@ public class CaptainAI : MonoBehaviour
 
     void UpdateTalkState() {
         anim.SetInteger("animState", 1);
+        agent.stoppingDistance = talkDistance;
+
         textBox.gameObject.SetActive(true);
         textBox.text = voicelines[textIndex];
 
