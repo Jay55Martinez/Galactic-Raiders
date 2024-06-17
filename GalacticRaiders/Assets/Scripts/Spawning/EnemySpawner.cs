@@ -42,9 +42,14 @@ public class EnemySpawner : MonoBehaviour
     void SpawnWave() { // spawns one wave, according to the waveCounter
         var wave = waves[waveCounter];
         for(int i = 0; i < wave.enemyPrefabs.Length; i++) {
-            GameObject enemy = Instantiate(wave.enemyPrefabs[i], wave.locations[i], transform.rotation);
+            GameObject enemy = Instantiate(wave.enemyPrefabs[i], wave.enemyInfo[i].spawnPoint, transform.rotation);
+
+            if (wave.enemyInfo[i].smartEnemy) { // if NPC, give it wander points
+                enemy.GetComponent<EliteAI>().patrolPoints = wave.enemyInfo[i].patrolPoints;
+            }
+
             enemy.transform.parent = gameObject.transform;
-            
+
             activeEnemies ++;
         }
         waveCounter++;

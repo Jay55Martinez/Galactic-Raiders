@@ -7,5 +7,5 @@ public class Wave : ScriptableObject
 {
     public new string name;
     public GameObject[] enemyPrefabs;
-    public Vector3[] locations;
+    public EnemyPos[] enemyInfo;
 }
