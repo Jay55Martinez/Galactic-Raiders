@@ -465,6 +465,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1354214162178623397}
     m_Modifications:
+    - target: {fileID: 179223904761679983, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: devMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179223904761679983, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: switchSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 40ae862e76851d54bbe40de52e4e06b5, type: 3}
     - target: {fileID: 2366154062872098349, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: orientation
       value: 

@@ -124,7 +124,6 @@ public class GunHandling : MonoBehaviour
             if (rayHit.collider.CompareTag("Enemy"))
             {
                 rayHit.collider.gameObject.GetComponent<EnemyHit>().TakeDamage(damage);
-                Debug.Log("hit");
             } /*else {
                 // only place bullethole if there are no enemies
                 Instantiate(bulletHole, rayHit.point, Quaternion.Euler(0, 180, 0)); // this only works on walls in certain directions

@@ -6,7 +6,10 @@ public class WeaponSwitching : MonoBehaviour
 {
     // the selected weapon
     public int currentWeapon = 0;
+    public bool devMode; // gives player all weapons for testing
     private int prevWeapon;
+
+    public AudioClip switchSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,6 @@ public class WeaponSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         prevWeapon = currentWeapon;
 
         // ScrollSelect();
@@ -33,6 +35,7 @@ public class WeaponSwitching : MonoBehaviour
         if (prevWeapon != currentWeapon)
         {
             SelectWeapon();
+            AudioSource.PlayClipAtPoint(switchSFX, transform.position);
         }
     }
 
@@ -55,15 +58,15 @@ public class WeaponSwitching : MonoBehaviour
     }
 
     void KeySelect() {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && GameManager.weapons[0]) {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && (GameManager.weapons[0] || devMode)) {
             currentWeapon = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && GameManager.weapons[1]) {
+        if (Input.GetKeyDown(KeyCode.Alpha2) && (GameManager.weapons[1] || devMode)) {
             currentWeapon = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && GameManager.weapons[2]) {
+        if (Input.GetKeyDown(KeyCode.Alpha3) && (GameManager.weapons[2] || devMode)) {
             currentWeapon = 2;
         }
     }

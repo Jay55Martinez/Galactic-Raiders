@@ -16,6 +16,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
   - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
-  locations:
-  - {x: 7, y: -2.5, z: 13}
-  - {x: 3.5, y: -2.5, z: 4.5}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  enemyInfo:
+  - {fileID: 11400000, guid: c2e3697a41e101c45873b5c1f018292c, type: 2}
+  - {fileID: 11400000, guid: 693444e4166622e40b0a0d67c2b58dc3, type: 2}
+  - {fileID: 11400000, guid: f1fa6f80870d31745ba14213eeac127e, type: 2}

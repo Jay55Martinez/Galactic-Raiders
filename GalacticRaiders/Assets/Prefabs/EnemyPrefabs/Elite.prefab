@@ -1420,7 +1420,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
+  - {fileID: 2100000, guid: d11f9dfa67f3e7e4e8c97a2db3700015, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2433,7 +2433,7 @@ RectTransform:
   m_Father: {fileID: 3880866389588243593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3871,7 +3871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4163963845895704580
 Transform:
   m_ObjectHideFlags: 0
@@ -3969,10 +3969,10 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 3
   patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  nextDestination: {fileID: 0}
+  - {x: 0.00019924133, y: 7.61e-43, z: 0.000000010255553}
+  - {x: 0.00000021176747, y: 1.153787e+20, z: 7.57e-43}
+  - {x: 4.6e-44, y: 4.1728105e+21, z: 0.00019924133}
+  nextDestination: {x: 0, y: 0, z: 0}
   meleeDistance: 2
   fireDistance: 8
   meleeChaseDistance: 4
@@ -4002,6 +4002,7 @@ MonoBehaviour:
   health: 0
   healDrop: {fileID: 5634378079872383410, guid: c047db1e212e6a4459cadf81eea3c24a, type: 3}
   ammoDrop: {fileID: 964192862192107480, guid: 6bfa33d85e5923342b635efcc1e72dea, type: 3}
+  worth: 10
   deathSFX: {fileID: 8300000, guid: 621d1e1ee7083874097744b893433a27, type: 3}
   slider: {fileID: 0}
 --- !u!195 &292322873007424045

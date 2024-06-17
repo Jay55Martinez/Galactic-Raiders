@@ -13,6 +13,7 @@ public class EnemyHit : MonoBehaviour
     public GameObject healDrop;
     public GameObject ammoDrop;
     private GameObject drop;
+    public int worth;
 
     public AudioClip deathSFX;
     public Slider slider;
@@ -45,6 +46,7 @@ public class EnemyHit : MonoBehaviour
             transform.parent.GetComponent<EnemySpawner>().DecrementEnemies(); // decrease # of active 
         }
         Instantiate(drop, transform.position + transform.up*.5f, Quaternion.Euler(new Vector3(-90, 0, 0)));
+        FindObjectOfType<LevelManager>().IncreaseCurrency(worth);
         AudioSource.PlayClipAtPoint(deathSFX, transform.position);
     }
 
@@ -52,12 +54,14 @@ public class EnemyHit : MonoBehaviour
         // only one health, so just die here
         if (health > 0) {
             health -= dmg;
-            slider.value = Mathf.Clamp(health, 0, 100);;
+            slider.value = Mathf.Clamp(health, 0, 100);
+            if (health <= 0) {
+                Die();
+            }
         }
 
-        if (health <= 0) {
-
-            Die();
-        }
+        // if (health <= 0) {
+        //     Die();
+        // }
     }
 }

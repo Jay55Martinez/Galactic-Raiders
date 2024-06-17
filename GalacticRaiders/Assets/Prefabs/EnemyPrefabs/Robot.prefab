@@ -499,6 +499,7 @@ MonoBehaviour:
   health: 1
   healDrop: {fileID: 5634378079872383410, guid: c047db1e212e6a4459cadf81eea3c24a, type: 3}
   ammoDrop: {fileID: 964192862192107480, guid: 6bfa33d85e5923342b635efcc1e72dea, type: 3}
+  worth: 5
   deathSFX: {fileID: 8300000, guid: 621d1e1ee7083874097744b893433a27, type: 3}
   slider: {fileID: 0}
 --- !u!195 &3424951756083703444
