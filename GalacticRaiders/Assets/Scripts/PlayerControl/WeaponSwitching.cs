@@ -27,7 +27,7 @@ public class WeaponSwitching : MonoBehaviour
 
         prevWeapon = currentWeapon;
 
-        //ScrollSelect();
+        // ScrollSelect();
         KeySelect();
 
         if (prevWeapon != currentWeapon)

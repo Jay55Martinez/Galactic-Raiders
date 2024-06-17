@@ -45,6 +45,10 @@ public class EliteAI : MonoBehaviour
     private float fireTimer;
     public AudioClip fireSFX;
 
+    [Header("Health")]
+    EnemyHit healthScript;
+    int health;
+
     GameObject player;
     NavMeshAgent agent;
     Animator anim;
@@ -56,6 +60,7 @@ public class EliteAI : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        healthScript = GetComponent<EnemyHit>();
 
         currentState = FSMStates.Patrol;
 
@@ -96,6 +101,11 @@ public class EliteAI : MonoBehaviour
         fireTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
         idleTimer += Time.deltaTime;
+
+        health = healthScript.health;
+        if (health <= 0) {
+            currentState = FSMStates.Death;
+        }
     }
 
     void UpdatePatrolState() {

@@ -7,7 +7,8 @@ public class RobotBehaviour : MonoBehaviour
 {
     public enum FSMStates {
         Chase, 
-        Attack
+        Attack,
+        Death
     }
 
     public FSMStates currentState;
@@ -21,6 +22,11 @@ public class RobotBehaviour : MonoBehaviour
     public int damageAmount = 10;
     public float cooldown = 5;
     private float attackTimer;
+    private bool isDead;
+
+    [Header("Health")]
+    EnemyHit healthScript;
+    int health;
 
     public GameObject player;
     Animator anim;
@@ -36,6 +42,11 @@ public class RobotBehaviour : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        healthScript = GetComponent<EnemyHit>();
+        health = healthScript.health;
+
+        currentState = FSMStates.Chase;
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -51,9 +62,19 @@ public class RobotBehaviour : MonoBehaviour
             case FSMStates.Attack: 
                 UpdateAttackState();
                 break;
+
+            case FSMStates.Death:
+                UpdateDeadState();
+                break;
         }
 
         attackTimer += Time.deltaTime;
+
+        health = healthScript.health;
+
+        if (health <= 0) {
+            currentState = FSMStates.Death;
+        }
     }
 
     void UpdateChaseState() {
@@ -75,14 +96,22 @@ public class RobotBehaviour : MonoBehaviour
         }
 
         if (attackTimer > cooldown) {
-            anim.SetInteger("animState", 2);
-            float animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-            Invoke("Attack", animDuration);
-            
-            attackTimer = 0;
+            if (!isDead) {
+                anim.SetInteger("animState", 2);
+                float animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+                Invoke("Attack", animDuration);
+                
+                attackTimer = 0;
+            }
         }
 
         FaceTarget(player.transform.position);
+    }
+
+    void UpdateDeadState() {
+        isDead = true;
+        anim.SetInteger("animState", 3);
+        Destroy(gameObject, 1);
     }
 
     // attack the player
