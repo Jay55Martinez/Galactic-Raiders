@@ -21,11 +21,13 @@ public class PlayerMovement : MonoBehaviour
     public float slideJumpForce;
     private float startYscale;
     private bool sliding;
+    private bool onWall;
     private Vector3 slideDir;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
+    public float skinWallStick = 0.001f;
     bool grounded;
 
     [Header("Keybinds")]
@@ -39,20 +41,14 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
     Rigidbody rb;
+    RaycastHit hit;
 
-    Animator movementAnimate;
 
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        movementAnimate = GetComponent<Animator>();
-
-        if (movementAnimate != null)
-        movementAnimate.SetInteger("transitionVar", 0);
 
         startYscale = transform.localScale.y;
 
@@ -62,9 +58,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
-
         MyInput();
         SpeedControl();
 
@@ -72,13 +65,13 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-        if (movementAnimate != null)
-            UpdateAnimation();
     }
 
     private void FixedUpdate()
     {
+        // ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
+
         MovePlayer();
     }
 
@@ -90,10 +83,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
-
-            // add jump animation
-            if (movementAnimate != null)
-            movementAnimate.SetInteger("transitionVar", 2);
 
             Invoke(nameof(Jump), jumpDelay);
 
@@ -117,12 +106,56 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (sliding)
+        onWall = Physics.Raycast(transform.position - new Vector3(0f, .75f, 0f),
+            moveDirection.normalized, skinWallStick)
+            || Physics.Raycast(transform.position + new Vector3(0f, .6f, 0f), moveDirection.normalized, skinWallStick);
+        
+        
+
+        if (onWall) {
+            print(moveDirection);
+            print(onWall);
+        }
+
+        // Sliding
+        if (sliding && !onWall)
             SlidingMovement();
-        else if (grounded)
+
+        // On the ground
+        else if (grounded && !onWall)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else if (!grounded)
+        // On the ground and against a wall
+        else if (grounded && onWall)
+            MoveOnWall(moveDirection, 1);
+
+        // In the air
+        else if (!grounded && !onWall)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        // In the air and against a wall
+        else if (!grounded && onWall)
+            MoveOnWall(moveDirection, airMultiplier);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawRay(transform.position - new Vector3(0f, .5f, 0f), moveDirection.normalized);
+    }
+
+    private void MoveOnWall(Vector3 movementForce, float airMovementMultiplier)
+    {
+        if (Mathf.Abs(movementForce.x) > Mathf.Abs(movementForce.z))
+        {
+            movementForce.z *= .3f;
+            movementForce.x *= .1f;
+        }
+        else
+        {
+            movementForce.x *= .3f;
+            movementForce.z *= .1f;
+        }
+        rb.AddForce(movementForce.normalized * moveSpeed * 10f * airMovementMultiplier, ForceMode.Force);
     }
 
     private void SpeedControl()
@@ -173,23 +206,5 @@ public class PlayerMovement : MonoBehaviour
     private void SlideJump() {
         Vector3 slideJump = slideDir.normalized + 0.1f * orientation.up;
         rb.AddForce(slideJump.normalized * slideJumpForce, ForceMode.Impulse);
-    }
-
-    private void UpdateAnimation()
-    {
-        if (!readyToJump)
-        {
-            // jump animation shound happen
-            return;
-        }
-        else if (moveDirection.normalized != Vector3.zero)
-        {
-            movementAnimate.SetInteger("transitionVar", 1);
-        }
-        else
-        {
-            // should be idle
-            movementAnimate.SetInteger("transitionVar", 0);
-        }
     }
 }
