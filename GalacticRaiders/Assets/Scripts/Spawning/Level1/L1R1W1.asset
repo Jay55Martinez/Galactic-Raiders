@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
   - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
   - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
-  locations:
-  - {x: -18, y: 0.5, z: 14}
-  - {x: 10, y: 0.5, z: -15}
-  - {x: -5, y: 3.5, z: -14}
+  enemyInfo:
+  - {fileID: 11400000, guid: ac50dbaaea71fa743a83229b28df9ef8, type: 2}
+  - {fileID: 11400000, guid: e9760883088ce224f87d49484c35f7b8, type: 2}
+  - {fileID: 11400000, guid: 4c4aaa6c785d02d4f9c64aeb1b54e8b5, type: 2}

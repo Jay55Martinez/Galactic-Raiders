@@ -5,13 +5,13 @@ using UnityEngine;
 public class DoorBehaviour : MonoBehaviour
 {
     public Transform closedPos;
-    private Vector3 openPos;
+    private Transform openPos;
     private bool closed;
 
     // Start is called before the first frame update
     void Start()
     {
-        openPos = transform.position;
+        openPos = transform;
         closed = false;
     }
 
@@ -21,7 +21,7 @@ public class DoorBehaviour : MonoBehaviour
         if (closed) {
             transform.position = Vector3.Lerp(transform.position, closedPos.position, 5f * Time.deltaTime); 
         } else {
-            transform.position = Vector3.Lerp(transform.position, openPos, 5f * Time.deltaTime); 
+            transform.position = Vector3.Lerp(transform.position, openPos.position, 5f * Time.deltaTime); 
         }
     }
 

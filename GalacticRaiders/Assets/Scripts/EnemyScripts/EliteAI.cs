@@ -20,8 +20,8 @@ public class EliteAI : MonoBehaviour
     [Header("Navigation")]
     public float walkSpeed;
     public float runSpeed;
-    public GameObject[] patrolPoints;
-    public Transform nextDestination;
+    public Vector3[] patrolPoints;
+    public Vector3 nextDestination;
     public float meleeDistance;
     public float fireDistance;
     public float meleeChaseDistance;
@@ -110,12 +110,12 @@ public class EliteAI : MonoBehaviour
 
     void UpdatePatrolState() {
         anim.SetInteger("animState", 1);
-        agent.SetDestination(nextDestination.position);
+        agent.SetDestination(nextDestination);
         agent.stoppingDistance = 0;
         agent.speed = walkSpeed;
 
         // wait at each wander point
-        if (Vector3.Distance(transform.position, nextDestination.position) < 1) {
+        if (Vector3.Distance(transform.position, nextDestination) < 1) {
             currentState = FSMStates.Idle;
             idleTimer = 0;
         }
@@ -125,14 +125,14 @@ public class EliteAI : MonoBehaviour
             currentState = FSMStates.Chase;
         }
 
-        FaceTarget(nextDestination.position);
-        agent.SetDestination(nextDestination.position);
+        FaceTarget(nextDestination);
+        agent.SetDestination(nextDestination);
     }
 
     void UpdateChaseState() {
         anim.SetInteger("animState", 2);
         agent.speed = runSpeed;
-        nextDestination = player.transform;
+        nextDestination = player.transform.position;
         agent.stoppingDistance = 0;
 
         // if the player is further than fire distance, chase them
@@ -149,8 +149,8 @@ public class EliteAI : MonoBehaviour
             currentState = FSMStates.Melee;
         }
 
-        FaceTarget(nextDestination.position);
-        agent.SetDestination(nextDestination.position);
+        FaceTarget(nextDestination);
+        agent.SetDestination(nextDestination);
     }
 
     void UpdateIdleState() {
@@ -172,7 +172,7 @@ public class EliteAI : MonoBehaviour
         agent.speed = 0;
         agent.stoppingDistance = meleeDistance;
         
-        nextDestination = player.transform;
+        nextDestination = player.transform.position;
 
         if (distToPlayer <= meleeDistance) {
             currentState = FSMStates.Melee;
@@ -182,7 +182,7 @@ public class EliteAI : MonoBehaviour
             currentState = FSMStates.Fire;
         }
 
-        FaceTarget(nextDestination.position);
+        FaceTarget(nextDestination);
 
         if (meleeTimer >= meleeTime) {
             if (!isDead) {
@@ -198,7 +198,7 @@ public class EliteAI : MonoBehaviour
         anim.SetInteger("animState", 4);
         agent.stoppingDistance = fireDistance;
 
-        nextDestination = player.transform;
+        nextDestination = player.transform.position;
 
         if (distToPlayer < meleeChaseDistance) {
             currentState = FSMStates.Chase;
@@ -206,7 +206,7 @@ public class EliteAI : MonoBehaviour
             currentState = FSMStates.Chase;
         }
 
-        FaceTarget(nextDestination.position);
+        FaceTarget(nextDestination);
 
         if (fireTimer >= fireTime) {
             if (!isDead) {
@@ -241,7 +241,7 @@ public class EliteAI : MonoBehaviour
     }
 
     void FindNextPoint() {
-        nextDestination = patrolPoints[currentDestinationIndex].transform;
+        nextDestination = patrolPoints[currentDestinationIndex];
         currentDestinationIndex = (currentDestinationIndex + 1) % patrolPoints.Length;
     }
 
