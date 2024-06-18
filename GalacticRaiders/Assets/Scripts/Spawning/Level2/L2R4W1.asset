@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937b9b0e903b31640a90d5e92fd040ad, type: 3}
+  m_Name: L2R4W1
+  m_EditorClassIdentifier: 
+  name: 
+  enemyPrefabs:
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  - {fileID: 8875492707904203560, guid: 457c8b9f244cb8c41a72bfce2910f7fa, type: 3}
+  enemyInfo:
+  - {fileID: 11400000, guid: cec3c7a654394a44dbfe75575de69a8e, type: 2}
+  - {fileID: 11400000, guid: 6d2f8a485424ffa44898ed0e3722e341, type: 2}
+  - {fileID: 11400000, guid: 43c4474c3fa97a344991bae3da3b5b81, type: 2}
+  - {fileID: 11400000, guid: 853c5c7080132534db116076be01392e, type: 2}
+  - {fileID: 11400000, guid: 5330f474a2345d24ab16d606115c4586, type: 2}
+  - {fileID: 11400000, guid: f62fbfb10b6b1584496640ef2d277b59, type: 2}

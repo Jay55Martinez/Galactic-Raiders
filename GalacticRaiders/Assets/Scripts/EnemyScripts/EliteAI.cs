@@ -225,7 +225,8 @@ public class EliteAI : MonoBehaviour
     }
 
     void Melee() {
-        player.GetComponent<PlayerHealth>().Damage(meleeDamage);
+        if (distToPlayer < meleeDistance) 
+            player.GetComponent<PlayerHealth>().Damage(meleeDamage);
     }
 
     void Fire() {

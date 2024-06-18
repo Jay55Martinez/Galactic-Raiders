@@ -117,7 +117,8 @@ public class RobotBehaviour : MonoBehaviour
     // attack the player
     void Attack() {
         attackTimer = 0f; // reset the timer
-        player.GetComponent<PlayerHealth>().Damage(damageAmount);
+        if (distToPlayer < attackDist) 
+            player.GetComponent<PlayerHealth>().Damage(damageAmount);
     }
 
     void FaceTarget(Vector3 target) {
