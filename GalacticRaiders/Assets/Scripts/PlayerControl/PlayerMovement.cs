@@ -34,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode slideKey = KeyCode.LeftShift;
 
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitingSlope;
+
+    [Header("Stair Handling")]
+    public GameObject stepRayLower;
+    public GameObject stepRayUpper;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -47,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -73,6 +83,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
 
         MovePlayer();
+
+        MoveUpStairs();
     }
 
     private void MyInput()
@@ -109,17 +121,23 @@ public class PlayerMovement : MonoBehaviour
         onWall = Physics.Raycast(transform.position - new Vector3(0f, .75f, 0f),
             moveDirection.normalized, skinWallStick)
             || Physics.Raycast(transform.position + new Vector3(0f, .6f, 0f), moveDirection.normalized, skinWallStick);
-        
-        
 
-        if (onWall) {
-            print(moveDirection);
-            print(onWall);
-        }
 
         // Sliding
         if (sliding && !onWall)
             SlidingMovement();
+
+        // On Slope
+        else if (OnSlope() && !exitingSlope)
+        {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force);
+
+            if (rb.velocity.y > 0)
+            {
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+
+        }
 
         // On the ground
         else if (grounded && !onWall)
@@ -134,14 +152,36 @@ public class PlayerMovement : MonoBehaviour
         // In the air and against a wall
         else if (!grounded && onWall)
             MoveOnWall(moveDirection, airMultiplier);
+
+        rb.useGravity = !OnSlope();
     }
 
+    // For debugging
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
         Gizmos.DrawRay(transform.position - new Vector3(0f, .5f, 0f), moveDirection.normalized);
     }
+
+    private void MoveUpStairs()
+    {
+        RaycastHit hitLower;
+
+        Vector3 movementDirectionWithoutY = new Vector3(moveDirection.normalized.x, 0, moveDirection.normalized.z);
+
+        if (Physics.Raycast(stepRayLower.transform.position, movementDirectionWithoutY, out hitLower, skinWallStick))
+        {
+            RaycastHit hitUpper;
+            if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper, skinWallStick + 0.4f))
+            {
+                print("should be moving up the stairs");
+                rb.position += new Vector3(0, 0.1f, 0);
+            }
+        }
+    }
+
+
 
     private void MoveOnWall(Vector3 movementForce, float airMovementMultiplier)
     {
@@ -160,17 +200,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        if (flatVel.magnitude > moveSpeed)
+        // limiting speed on the slope
+        if (OnSlope() && !exitingSlope)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            if (rb.velocity.magnitude > moveSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * moveSpeed;
+            }
+
+        }
+        else
+        {
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
         }
     }
 
     private void Jump()
     {
+        exitingSlope = true;
+
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -179,6 +233,8 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+
+        exitingSlope = false;
     }
 
     private void StartSlide() {
@@ -206,5 +262,21 @@ public class PlayerMovement : MonoBehaviour
     private void SlideJump() {
         Vector3 slideJump = slideDir.normalized + 0.1f * orientation.up;
         rb.AddForce(slideJump.normalized * slideJumpForce, ForceMode.Impulse);
+    }
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.8f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+
+        }
+         return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 }

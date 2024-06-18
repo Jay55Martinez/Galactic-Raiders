@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(activeEnemies);
+        // Debug.Log(activeEnemies);
         if (waveCounter < waves.Length) { // have all the waves been spawned?
             if ((waveTimer > waveTransition) && (activeEnemies == 0) && isSpawning) {
                 SpawnWave();

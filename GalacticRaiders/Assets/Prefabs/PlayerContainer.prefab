@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 507660614851602170}
   m_Layer: 0
   m_Name: PlayerBody
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1159460033489832306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6407267534043758597}
+  m_Layer: 0
+  m_Name: StepRayLower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6407267534043758597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159460033489832306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.651, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 401689314650736610}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2548569094054631967
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +152,8 @@ Transform:
   - {fileID: 8435421463629920521}
   - {fileID: 5682719644570080869}
   - {fileID: 9087671285307608506}
+  - {fileID: 6407267534043758597}
+  - {fileID: 7407289290535099100}
   m_Father: {fileID: 8934537156943481268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8965781374331264408
@@ -213,7 +246,7 @@ MonoBehaviour:
   jumpForce: 8
   jumpCoolDown: 0.5
   airMultiplier: 0.5
-  jumpDelay: 0.25
+  jumpDelay: 0
   slideForce: 200
   slideYScale: 0.5
   slideJumpForce: 50
@@ -224,6 +257,9 @@ MonoBehaviour:
   skinWallStick: 1.1
   jumpKey: 32
   slideKey: 304
+  maxSlopeAngle: 40
+  stepRayLower: {fileID: 1159460033489832306}
+  stepRayUpper: {fileID: 8960097089602017721}
   orientation: {fileID: 9087671285307608506}
 --- !u!114 &6159959694805489228
 MonoBehaviour:
@@ -395,6 +431,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 401689314650736610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8960097089602017721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7407289290535099100}
+  m_Layer: 0
+  m_Name: StepRayUpper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7407289290535099100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960097089602017721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 401689314650736610}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6017703874511261617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -467,7 +534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 179223904761679983, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: devMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179223904761679983, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: switchSFX
