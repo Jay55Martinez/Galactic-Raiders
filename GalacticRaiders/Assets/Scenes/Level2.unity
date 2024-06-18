@@ -800,7 +800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &202413823
 Transform:
   m_ObjectHideFlags: 0
@@ -1460,7 +1460,7 @@ PrefabInstance:
       objectReference: {fileID: 1354435428}
     - target: {fileID: 7197577612979097499, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: devMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934537156943481268, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3125,7 +3125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &784153660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4159,7 +4159,7 @@ Transform:
   m_GameObject: {fileID: 1067306447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: -20.5, z: 8}
+  m_LocalPosition: {x: -72, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -81,6 +81,7 @@ public class EliteAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(nextDestination);
         distToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         switch (currentState) {

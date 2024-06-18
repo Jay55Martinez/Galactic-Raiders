@@ -48,7 +48,7 @@ public class CaptainAI : MonoBehaviour
         anim = GetComponent<Animator>();
         dia = GetComponent<NPCDialogue>();
 
-        dia.setDialogue(dialogues[0]);
+        dia.setDialogue(dialogues[GameManager.gameProgress-1]);
     }
 
     // Update is called once per frame

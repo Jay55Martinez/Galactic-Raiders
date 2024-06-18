@@ -1608,6 +1608,7 @@ MonoBehaviour:
   currentState: 0
   dialogues:
   - {fileID: 11400000, guid: f2619ed79c9be7c48b50bcdadd6f8a61, type: 2}
+  - {fileID: 11400000, guid: 157e51ba3f9e4ed47b1ad0d82406c435, type: 2}
   wanderPoints:
   - {fileID: 1526906046}
   - {fileID: 899095641}
