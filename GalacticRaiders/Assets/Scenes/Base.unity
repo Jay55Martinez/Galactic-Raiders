@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 865419797500329714, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1975837157582473116, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
       propertyPath: currencyText
       value: 
@@ -1311,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6784314, g: 0, b: 0.5529412, a: 1}
+  m_Color: {r: 1, g: 0.7591003, b: 0.023584902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1580,6 +1584,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1119232436347972, guid: 76abcab92ff045d4083fdb3f1c4bbd9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1796207327}
+    - targetCorrespondingSourceObject: {fileID: 1119232436347972, guid: 76abcab92ff045d4083fdb3f1c4bbd9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1796207328}
   m_SourcePrefab: {fileID: 100100000, guid: 76abcab92ff045d4083fdb3f1c4bbd9f, type: 3}
 --- !u!1 &1796207323 stripped
 GameObject:
@@ -1599,13 +1606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  voicelines:
-  - Good work on that mission GR47.
-  - And you even found yourself a weapon.
-  - 'Well, you can get more here, should you have the cash. '
-  - In any case, press the control panel when you're ready.
-  textBox: {fileID: 1534171151}
-  textIndex: 0
+  dialogues:
+  - {fileID: 11400000, guid: f2619ed79c9be7c48b50bcdadd6f8a61, type: 2}
   wanderPoints:
   - {fileID: 1526906046}
   - {fileID: 899095641}
@@ -1641,6 +1643,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1796207328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796207323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bb48f18a7a7534ab7d6a6c15b936d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: f2619ed79c9be7c48b50bcdadd6f8a61, type: 2}
+  textBox: {fileID: 1534171151}
+  duration: 2
 --- !u!114 &1852020001 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7062728960526734316, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}

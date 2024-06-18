@@ -49,6 +49,13 @@ public class EliteAI : MonoBehaviour
     EnemyHit healthScript;
     int health;
 
+    [Header("Dialogue")]
+    public Dialogue[] detectDialogues;
+    public Dialogue[] deathDialogues;
+    NPCDialogue dia;
+    int detectIndex;
+    int deathIndex;
+
     GameObject player;
     NavMeshAgent agent;
     Animator anim;
@@ -61,8 +68,12 @@ public class EliteAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         healthScript = GetComponent<EnemyHit>();
+        dia = GetComponent<NPCDialogue>();
 
         currentState = FSMStates.Patrol;
+
+        detectIndex = Random.Range(0, detectDialogues.Length);
+        deathIndex = Random.Range(0, deathDialogues.Length);
 
         FindNextPoint();
     }
@@ -123,6 +134,8 @@ public class EliteAI : MonoBehaviour
         // if player detected, switch to chase state
         if (CanSeePlayer()) {
             currentState = FSMStates.Chase;
+            dia.setDialogue(detectDialogues[detectIndex]);
+            dia.StartTalking();
         }
 
         FaceTarget(nextDestination);
@@ -221,6 +234,11 @@ public class EliteAI : MonoBehaviour
     void UpdateDeadState() {
         isDead = true;
         anim.SetInteger("animState", 5);
+
+        dia.setDialogue(deathDialogues[deathIndex]);
+        dia.ResetDialogue();
+        dia.StartTalking();
+        
         Destroy(gameObject, 2);
     }
 

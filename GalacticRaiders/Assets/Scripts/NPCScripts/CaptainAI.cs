@@ -15,9 +15,10 @@ public class CaptainAI : MonoBehaviour
     public FSMStates currentState;
 
     [Header("Voicelines")]
-    public string[] voicelines;
-    public Text textBox;
-    public int textIndex;
+    public Dialogue[] dialogues;
+    // public Text textBox;
+    // public int textIndex;
+    NPCDialogue dia;
 
     [Header("Navigation")]
     public GameObject[] wanderPoints;
@@ -45,6 +46,9 @@ public class CaptainAI : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        dia = GetComponent<NPCDialogue>();
+
+        dia.setDialogue(dialogues[0]);
     }
 
     // Update is called once per frame
@@ -78,8 +82,6 @@ public class CaptainAI : MonoBehaviour
         if (distToPlayer < chaseDistance) {
             currentState = FSMStates.Chase;
         }
-
-        textBox.gameObject.SetActive(false);
     }
 
     void UpdateChaseState() {
@@ -89,26 +91,26 @@ public class CaptainAI : MonoBehaviour
 
         if (distToPlayer < talkDistance) {
             currentState = FSMStates.Talk;
-            InvokeRepeating("NextVoiceLine", 2f, 2f);
+            dia.ResetDialogue();
+            dia.StartTalking();
         } else if (distToPlayer > chaseDistance) {
             currentState = FSMStates.Patrol;
             FindNextPoint();
         }
 
-        textBox.gameObject.SetActive(false);
+        FaceTarget(player.transform.position);
     }
 
     void UpdateTalkState() {
         anim.SetInteger("animState", 1);
         agent.stoppingDistance = talkDistance;
 
-        textBox.gameObject.SetActive(true);
-        textBox.text = voicelines[textIndex];
-
         if (distToPlayer > talkDistance) {
             currentState = FSMStates.Chase;
-            textIndex = 0;
+            dia.StopTalking();
         }
+
+        FaceTarget(player.transform.position);
     }
 
     void FindNextPoint() {
@@ -116,9 +118,10 @@ public class CaptainAI : MonoBehaviour
         currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
     }
 
-    void NextVoiceLine() {
-        if (textIndex < voicelines.Length - 1) {
-            textIndex++;
-        } 
+    void FaceTarget(Vector3 target) {
+        Vector3 directionToTarget = (target - transform.position).normalized;
+        directionToTarget.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
     }
 }
