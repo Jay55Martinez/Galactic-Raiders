@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public float waveDelay;
 
     public GameObject progress; // enter door that unlocks / progression item
+    public GameObject spawnFXPrefab;
 
     private int waveCounter = 0;
     private int activeEnemies = 0;
@@ -44,17 +45,20 @@ public class EnemySpawner : MonoBehaviour
         var wave = waves[waveCounter];
         for(int i = 0; i < wave.enemyPrefabs.Length; i++) {
             GameObject enemy = Instantiate(wave.enemyPrefabs[i], wave.enemyInfo[i].spawnPoint, transform.rotation);
-
+            enemy.SetActive(false);
             if (wave.enemyInfo[i].smartEnemy) { // if NPC, give it wander points
                 enemy.GetComponent<EliteAI>().patrolPoints = wave.enemyInfo[i].patrolPoints;
             }
-
             enemy.transform.parent = gameObject.transform;
 
             activeEnemies ++;
+
+            Instantiate(spawnFXPrefab, wave.enemyInfo[i].spawnPoint, transform.rotation);
         }
         waveCounter++;
         Debug.Log(waveCounter);
+
+        Invoke("ActivateEnemies", 1f);
     }
 
     public void DecrementEnemies() { // called in OnDestroy() for enemies
@@ -76,12 +80,19 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
             isSpawning = true;
+            Destroy(GetComponent<BoxCollider>());
         }
     }
 
     private void Progress() {
         if (progress.CompareTag("Door")) {
             progress.GetComponent<DoorBehaviour>().Open();
+        }
+    }
+
+    void ActivateEnemies() {
+        foreach (Transform enemy in transform) {
+            enemy.gameObject.SetActive(true);
         }
     }
 }
