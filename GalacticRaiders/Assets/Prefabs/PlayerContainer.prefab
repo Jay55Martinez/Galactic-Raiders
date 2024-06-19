@@ -596,6 +596,10 @@ PrefabInstance:
       propertyPath: fireSFX
       value: 
       objectReference: {fileID: 8300000, guid: 0e75bce1ea8a4614bbb66b582873b696, type: 3}
+    - target: {fileID: 3985583197536045751, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: m_TagString
+      value: WeaponHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 4277794270180123893, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -615,6 +619,14 @@ PrefabInstance:
     - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: reserveAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: magazineSize
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 8332954349253497727, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: m_TagString

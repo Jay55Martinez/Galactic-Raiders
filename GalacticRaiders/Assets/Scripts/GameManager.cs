@@ -9,6 +9,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static int totalCurrency; // tracks the player's currency throughout levels
+    public static int reserveAmmo; // Tracks rifle ammo thoughout levels
 
     // game progress
     public static int gameProgress; // which levels have the player beaten?
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
             weapons[1] = true;
             weapons[2] = true;
             totalCurrency = 150;
+            reserveAmmo = 150;
         }
         // set all player guns to false
     }
@@ -40,6 +42,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static string CurrentLevel()
+    {
+        if (isBase)
+        {
+            return "Base";
+        }
+        else if (!isBase)
+        {
+            return "Level" + gameProgress.ToString();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public static string NextLevel() { // what is the name of the next level?

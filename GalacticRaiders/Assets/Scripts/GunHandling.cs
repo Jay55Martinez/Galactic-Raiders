@@ -48,6 +48,7 @@ public class GunHandling : MonoBehaviour
 
     public void Update()
     {
+
         MyInput();
 
         // SetText

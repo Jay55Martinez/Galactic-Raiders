@@ -60,6 +60,7 @@ public class WeaponSwitching : MonoBehaviour
     void KeySelect() {
         if (Input.GetKeyDown(KeyCode.Alpha1) && (GameManager.weapons[0] || devMode)) {
             currentWeapon = 0;
+
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && (GameManager.weapons[1] || devMode)) {
@@ -69,6 +70,8 @@ public class WeaponSwitching : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3) && (GameManager.weapons[2] || devMode)) {
             currentWeapon = 2;
         }
+
+        FindObjectOfType<LevelManager>().UpdateWeaponUI(currentWeapon);
     }
 
     // Sets the weapon to the currentWeapon value

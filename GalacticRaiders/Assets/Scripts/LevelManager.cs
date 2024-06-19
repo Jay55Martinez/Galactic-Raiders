@@ -76,7 +76,14 @@ public class LevelManager : MonoBehaviour
 
     // Updates currency text
     void UpdateCurrencyText() {
-        currencyText.text = "Currency: " + levelCurrency;
+        if (GameManager.CurrentLevel() == "Base")
+        {
+            currencyText.text = "Total Currency: " + GameManager.totalCurrency;
+        }
+        else
+        {
+            currencyText.text = "Level Currency: " + levelCurrency;
+        }
     }
 
     // Updates ammo counter
@@ -92,5 +99,15 @@ public class LevelManager : MonoBehaviour
         Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
         //int healCount = int.Parse(healCounterText.text) + amt;
         healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
+    }
+
+    public void UpdateWeaponUI(int weaponIndex)
+    {
+        if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 2)
+        {
+            inventoryUI[weaponIndex].color = Color.red;
+            inventoryUI[(weaponIndex + 1) % 3].color = Color.gray;
+            inventoryUI[(weaponIndex + 2) % 3].color = Color.gray;
+        }
     }
 }
