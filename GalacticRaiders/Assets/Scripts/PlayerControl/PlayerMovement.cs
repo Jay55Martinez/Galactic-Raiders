@@ -175,7 +175,6 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit hitUpper;
             if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper, skinWallStick + 0.4f))
             {
-                print("should be moving up the stairs");
                 rb.position += new Vector3(0, 0.1f, 0);
             }
         }
