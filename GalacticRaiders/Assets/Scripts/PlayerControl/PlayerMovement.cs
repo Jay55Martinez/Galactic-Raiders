@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-
+    public float climbingSpeed;
     public float groundDrag;
 
     public float jumpForce;
@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public float skinWallStick = 0.001f;
-    bool grounded;
+    public bool grounded;
+    public bool climbing;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -48,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
     Rigidbody rb;
     RaycastHit hit;
 
@@ -123,8 +124,14 @@ public class PlayerMovement : MonoBehaviour
             || Physics.Raycast(transform.position + new Vector3(0f, .6f, 0f), moveDirection.normalized, skinWallStick);
 
 
+        // Climbing
+        if (climbing)
+        {
+            MoveOnWall(moveDirection, .5f);
+        }
+
         // Sliding
-        if (sliding && !onWall)
+        else if (sliding && !onWall)
             SlidingMovement();
 
         // On Slope
@@ -173,11 +180,22 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(stepRayLower.transform.position, movementDirectionWithoutY, out hitLower, skinWallStick))
         {
             RaycastHit hitUpper;
-            if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper, skinWallStick + 0.4f))
+            if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper, skinWallStick + 0.2f))
             {
                 rb.position += new Vector3(0, 0.1f, 0);
             }
         }
+
+        //RaycastHit hitLower45;
+
+        //if (Physics.Raycast(stepRayLower.transform.position, movementDirectionWithoutY * , out hitLower45, skinWallStick))
+        //{
+        //    RaycastHit hitUpper45;
+        //    if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper45, skinWallStick + 0.2f))
+        //    {
+        //        rb.position += new Vector3(0, 0.1f, 0);
+        //    }
+        //}
     }
 
 
