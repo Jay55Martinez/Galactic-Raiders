@@ -36,9 +36,7 @@ public class RobotBehaviour : MonoBehaviour
     void Start()
     {
         // find player if missing
-        if (player == null) {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
 
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
