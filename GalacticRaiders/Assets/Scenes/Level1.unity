@@ -87626,34 +87626,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 484823493033500009, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 484823493033500009, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: reserveAmmo
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 484823493033500009, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: magazineSize
-      value: 9999
-      objectReference: {fileID: 0}
     - target: {fileID: 700654758930420786, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: pickupText
       value: 
       objectReference: {fileID: 689630939}
-    - target: {fileID: 700654758930420786, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: lootDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099657170091878224, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099657170091878224, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
-      propertyPath: BulletTrail
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2895567594740791755, guid: 2db4d0e068199a2428b7e37f04c03f9e, type: 3}
       propertyPath: healCounterText
       value: 

@@ -26,13 +26,12 @@ public class Interact : MonoBehaviour
                 }
                 else if (lookAt.CompareTag("Ammo"))
                 {
-                    FindObjectOfType<GunHandling>().AddReserveAmmo(5);
-                    FindObjectOfType<LevelManager>().UpdateAmmoCounter(5);
+                    GameManager.AddAmmo(5);
                     lookAt.GetComponent<PickupBehaviour>().Die();
                 } 
                 else if (lookAt.CompareTag("Heal"))
                 {
-                    FindObjectOfType<LevelManager>().UpdateHealCounter(1);
+                    GameManager.AddHeal(1);
                     lookAt.GetComponent<PickupBehaviour>().Die();
                 }
                 else if (lookAt.CompareTag("Loot")) {

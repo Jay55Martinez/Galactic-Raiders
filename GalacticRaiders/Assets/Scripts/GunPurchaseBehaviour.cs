@@ -34,7 +34,6 @@ public class GunPurchaseBehaviour : MonoBehaviour
             }
 
             GameManager.totalCurrency -= price;
-            FindObjectOfType<LevelManager>().UpdateWeaponUI(3);
             // GameObject.FindGameObjectWithTag("WeaponHolder").GetComponent<WeaponSwitching>().currentWeapon = slot;
         } else {
             if (failPurchaseSFX != null) {
