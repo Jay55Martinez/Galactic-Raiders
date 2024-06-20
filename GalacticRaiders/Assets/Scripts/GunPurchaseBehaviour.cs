@@ -28,6 +28,7 @@ public class GunPurchaseBehaviour : MonoBehaviour
     public void Purchase() {
         if (GameManager.totalCurrency >= price) {
             GameManager.weapons[slot] = true;
+            FindObjectOfType<LevelManager>().UpdateWeaponUI(3);
             Destroy(gameObject);
             if (purchaseSFX != null) {
                 AudioSource.PlayClipAtPoint(purchaseSFX, transform.position);

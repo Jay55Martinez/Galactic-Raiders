@@ -92,7 +92,10 @@ public class LevelManager : MonoBehaviour
     // Updates ammo counter
     public void UpdateAmmoCounter()
     {
-        inventoryUI[1].GetComponentInChildren<Text>().text = GameManager.reserveAmmo.ToString();
+        if (inventoryUI[1].GetComponentInChildren<Text>() != null)
+        {
+            inventoryUI[1].GetComponentInChildren<Text>().text = GameManager.reserveAmmo.ToString();
+        }
     }
 
     // Updates heal counter
@@ -103,6 +106,26 @@ public class LevelManager : MonoBehaviour
 
     public void UpdateWeaponUI(int weaponIndex)
     {
+        for (int i = 0; i < GameManager.weapons.Length; i++)
+        {
+            if (GameManager.weapons[i])
+            {
+                if (i == 0)
+                {
+                    inventoryUI[i].transform.Find("RevolverImage").GetComponent<Image>().gameObject.SetActive(true);
+                }
+                else if (i == 1)
+                {
+                    inventoryUI[i].transform.Find("RifleImage").GetComponent<Image>().gameObject.SetActive(true);
+                    UpdateAmmoCounter();
+                }
+                else if (i ==2)
+                {
+                    inventoryUI[i].transform.Find("ShotgunImage").GetComponent<Image>().gameObject.SetActive(true);
+                }
+            }
+        }
+
         if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 2)
         {
             inventoryUI[weaponIndex].color = Color.red;
