@@ -19,6 +19,7 @@ TagManager:
   - Purchase
   - Button
   - WeaponHolder
+  - ForceField
   layers:
   - Default
   - TransparentFX

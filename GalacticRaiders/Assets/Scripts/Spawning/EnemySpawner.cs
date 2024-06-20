@@ -88,6 +88,10 @@ public class EnemySpawner : MonoBehaviour
         if (progress.CompareTag("Door")) {
             progress.GetComponent<DoorBehaviour>().Open();
         }
+        if (progress.CompareTag("ForceField"))
+        {
+            progress.SetActive(false);
+        }
     }
 
     void ActivateEnemies() {
