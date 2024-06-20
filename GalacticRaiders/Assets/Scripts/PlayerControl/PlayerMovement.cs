@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public float skinWallStick = 0.001f;
     public bool grounded;
     public bool climbing;
+    public Vector3 lastGroundedPosition;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -73,7 +74,10 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         if (grounded)
+        {
             rb.drag = groundDrag;
+            lastGroundedPosition = transform.position;
+        }
         else
             rb.drag = 0;
     }
@@ -81,13 +85,14 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MovePlayer();
 
         MoveUpStairs();
     }
 
+    // Method used for taking the keyboard input
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -115,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Handles the players movement on different surfaces
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -123,11 +129,11 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.normalized, skinWallStick)
             || Physics.Raycast(transform.position + new Vector3(0f, .6f, 0f), moveDirection.normalized, skinWallStick);
 
-
         // Climbing
         if (climbing)
         {
-            MoveOnWall(moveDirection, .5f);
+            Vector3 movementDirectionWithoutXZ = new Vector3(0, moveDirection.normalized.y, 0);
+            rb.AddForce(movementDirectionWithoutXZ, ForceMode.Force);
         }
 
         // Sliding
@@ -137,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         // On Slope
         else if (OnSlope() && !exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
 
             if (rb.velocity.y > 0)
             {
@@ -186,19 +192,40 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //RaycastHit hitLower45;
+        RaycastHit hitLower45;
 
-        //if (Physics.Raycast(stepRayLower.transform.position, movementDirectionWithoutY * , out hitLower45, skinWallStick))
-        //{
-        //    RaycastHit hitUpper45;
-        //    if (!Physics.Raycast(stepRayUpper.transform.position, movementDirectionWithoutY, out hitUpper45, skinWallStick + 0.2f))
-        //    {
-        //        rb.position += new Vector3(0, 0.1f, 0);
-        //    }
-        //}
+        if (Physics.Raycast(stepRayLower.transform.position, RotateVectorY(movementDirectionWithoutY, 45), out hitLower45, skinWallStick))
+        {
+            RaycastHit hitUpper45;
+            if (!Physics.Raycast(stepRayUpper.transform.position, RotateVectorY(movementDirectionWithoutY, 45), out hitUpper45, skinWallStick + 0.2f))
+            {
+                rb.position += new Vector3(0, 0.1f, 0);
+            }
+        }
+
+        RaycastHit hitLowerMinus45;
+
+        if (Physics.Raycast(stepRayLower.transform.position, RotateVectorY(movementDirectionWithoutY, -45), out hitLowerMinus45, skinWallStick))
+        {
+            RaycastHit hitUpperMinus45;
+            if (!Physics.Raycast(stepRayUpper.transform.position, RotateVectorY(movementDirectionWithoutY, -45), out hitUpperMinus45, skinWallStick + 0.2f))
+            {
+                rb.position += new Vector3(0, 0.1f, 0);
+            }
+        }
     }
 
+    Vector3 RotateVectorY(Vector3 vector, float angle)
+    {
+        float rad = angle * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
 
+        float newX = vector.x * cos + vector.z * sin;
+        float newZ = -vector.x * sin + vector.z * cos;
+
+        return new Vector3(newX, vector.y, newZ);
+    }
 
     private void MoveOnWall(Vector3 movementForce, float airMovementMultiplier)
     {
