@@ -15,14 +15,17 @@ public class LevelManager : MonoBehaviour
     public Text currencyText; // currency text element
     public GameObject[] inventory = new GameObject[4]; // Weapon, ammo, and health inventory
     public Image[] inventoryUI = new Image[4]; // inventory UI element
+    public Text gameStateText;
 
     public AudioClip winSFX;
+    public AudioClip deathSFX;
     private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
         gameOver = false;
+        gameStateText.gameObject.SetActive(false);
         levelCurrency = 0;
         UpdateCurrencyText();
         UpdateAmmoCounter();
@@ -41,6 +44,8 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
+        AudioSource.PlayClipAtPoint(deathSFX, player.position);
+        gameStateText.gameObject.SetActive(true);
         Debug.Log("HP 0, game lost.");
         Invoke("LoadCurrentLevel", 2);
     }
