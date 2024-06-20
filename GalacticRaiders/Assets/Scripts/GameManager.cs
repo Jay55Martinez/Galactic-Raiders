@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour
 
     // game progress
     public static int gameProgress; // which levels have the player beaten?
+    /* Level Progression scheme: 
+    level 0 base (main menu)
+    level 1 notbase (level 1)
+    level 1 base (base after level 1)
+    level 2 notbase (level 2)
+    ...
+    */
     public static int levelAmt; // how many levels are there?
     public static bool isBase; // is the current level an intermediary level?
     public static bool[] weapons = {false, false, false};
@@ -22,8 +29,8 @@ public class GameManager : MonoBehaviour
     public static float sensitivity;
 
     void Awake() {
-        isBase = true;
-        gameProgress = 0;  
+        // isBase = true;
+        // gameProgress = 0;  
         levelAmt = 3;
         if (devMode) {
             weapons[0] = true;
@@ -102,12 +109,44 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("sensitivity", val);
     }
 
+    public static void ResetGame() {
+        PlayerPrefs.DeleteAll();
+    }
+
+    private static void RevertLevel() { // sets gameProgress and isBase level to last completed level state
+        if (isBase) {
+            isBase = false;
+        } else {
+            isBase = true;
+            gameProgress--;
+        }
+    }
+
     public static void Load() {
+        gameProgress = PlayerPrefs.GetInt("gameProgress", 0);
+        isBase = PlayerPrefs.GetInt("isBase", 1) == 1;
         sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
+
+        weapons[0] = PlayerPrefs.GetInt("hasPistol", 0) == 1;
+        weapons[1] = PlayerPrefs.GetInt("hasRifle", 0) == 1;
+        weapons[2] = PlayerPrefs.GetInt("haseShotgun", 0) == 1;
+
+        totalCurrency = PlayerPrefs.GetInt("totalCurrency", 0);
     }
 
     public static void Save() {
+        RevertLevel(); // get the gameProgress and isBase of most recently completed level
+
+        // level progress
         PlayerPrefs.SetInt("gameProgress", gameProgress);
-        // PlayerPrefs.SetInt("isBase", )
+
+        PlayerPrefs.SetInt("isBase", isBase ? 1 : 0);
+
+        // gun progress
+        PlayerPrefs.SetInt("hasPistol", weapons[0] ? 1 : 0);
+        PlayerPrefs.SetInt("hasRifle", weapons[1] ? 1 : 0);
+        PlayerPrefs.SetInt("hasShotgun", weapons[2] ? 1 : 0);
+
+        PlayerPrefs.SetInt("totalCurrency", totalCurrency);
     }
 }
