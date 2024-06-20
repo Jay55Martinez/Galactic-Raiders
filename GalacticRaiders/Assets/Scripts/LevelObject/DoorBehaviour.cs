@@ -25,12 +25,10 @@ public class DoorBehaviour : MonoBehaviour
     }
 
     public void Close() {
-        Debug.Log("Close");
         closed = true;
     }
 
     public void Open() {
-        Debug.Log("Open");
         closed = false;
     }
 }
