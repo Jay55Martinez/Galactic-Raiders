@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: W2 E 2
   m_EditorClassIdentifier: 
   smartEnemy: 0
-  spawnPoint: {x: 5, y: 7, z: 8}
-  wanderPoints: []
+  spawnPoint: {x: -5, y: 3.5, z: -12.5}
+  patrolPoints: []

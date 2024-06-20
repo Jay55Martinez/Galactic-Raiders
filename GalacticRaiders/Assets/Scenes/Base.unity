@@ -2823,7 +2823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: 2
-  price: 50
+  price: 100
   purchaseSFX: {fileID: 8300000, guid: 93f2d1a1b6ed71648a0522bd421e05ce, type: 3}
   failPurchaseSFX: {fileID: 8300000, guid: c635af886095eb4459a0573553c616ea, type: 3}
 --- !u!65 &33793616441631065

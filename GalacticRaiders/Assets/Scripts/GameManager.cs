@@ -110,7 +110,16 @@ public class GameManager : MonoBehaviour
     }
 
     public static void ResetGame() {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("gameProgress", 0);
+
+        PlayerPrefs.SetInt("isBase", 1);
+
+        // gun progress
+        PlayerPrefs.SetInt("hasPistol", 0);
+        PlayerPrefs.SetInt("hasRifle", 0);
+        PlayerPrefs.SetInt("hasShotgun", 0);
+
+        PlayerPrefs.SetInt("totalCurrency", 0);
     }
 
     private static void RevertLevel() { // sets gameProgress and isBase level to last completed level state
