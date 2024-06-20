@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  climbingSpeed: 0
   groundDrag: 5
   jumpForce: 8
   jumpCoolDown: 0.5
@@ -256,12 +257,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   skinWallStick: 1.1
+  grounded: 0
+  climbing: 0
+  lastGroundedPosition: {x: 0, y: 0, z: 0}
   jumpKey: 32
   slideKey: 304
-  maxSlopeAngle: 40
+  maxSlopeAngle: 30
   stepRayLower: {fileID: 1159460033489832306}
   stepRayUpper: {fileID: 8960097089602017721}
   orientation: {fileID: 9087671285307608506}
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6159959694805489228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 9087671285307608506}
   rb: {fileID: 8965781374331264408}
+  pm: {fileID: 2587394337830042169}
   whatIsWall:
     serializedVersion: 2
     m_Bits: 128
@@ -324,7 +330,7 @@ GameObject:
   - component: {fileID: 8934537156943481268}
   m_Layer: 0
   m_Name: PlayerContainer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
