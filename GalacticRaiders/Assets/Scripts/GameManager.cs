@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("hasShotgun", 0);
 
         PlayerPrefs.SetInt("totalCurrency", 0);
+
+        Load();
     }
 
     private static void RevertLevel() { // sets gameProgress and isBase level to last completed level state
