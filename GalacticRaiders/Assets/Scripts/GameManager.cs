@@ -18,8 +18,11 @@ public class GameManager : MonoBehaviour
     public static bool[] weapons = {false, false, false};
     public bool devMode = true;
 
+    // sensitivity
+    public static float sensitivity;
+
     void Awake() {
-        isBase = false;
+        isBase = true;
         gameProgress = 1;  
         levelAmt = 3;
         if (devMode) {
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
             reserveAmmo = 150;
         }
         // set all player guns to false
+        
+        Load();
     }
 
     // Start is called before the first frame update
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public static string CurrentLevel()
@@ -62,14 +67,23 @@ public class GameManager : MonoBehaviour
 
     public static string NextLevel() { // what is the name of the next level?
         if (!isBase) {
-            isBase = true;
+            // isBase = true;
             return "Base";
         } else if (gameProgress <= levelAmt) {
-            gameProgress++;
-            isBase = false;
+            // gameProgress++;
+            // isBase = false;
             return "Level" + gameProgress.ToString();
         } else {
             return null;
+        }
+    }
+
+    public static void UpdateLevel() {
+        if (!isBase) {
+            isBase = true;
+        } else if (gameProgress <= levelAmt) {
+            gameProgress++;
+            isBase = false;
         }
     }
 
@@ -81,5 +95,18 @@ public class GameManager : MonoBehaviour
         if (totalCurrency >= amt) {
             totalCurrency -= amt;
         }
+    }
+
+    public static void UpdateSens(float val) {
+        sensitivity = val;
+        PlayerPrefs.SetFloat("sensitivity", val);
+    }
+
+    public static void Load() {
+        sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
+    }
+
+    public static void Save() {
+
     }
 }

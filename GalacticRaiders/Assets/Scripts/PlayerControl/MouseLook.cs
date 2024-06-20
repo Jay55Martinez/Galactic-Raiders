@@ -25,8 +25,8 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         // get input from the mouse
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX * GameManager.sensitivity;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY * GameManager.sensitivity;
 
         yRotation += mouseX;
         xRotation -= mouseY;
