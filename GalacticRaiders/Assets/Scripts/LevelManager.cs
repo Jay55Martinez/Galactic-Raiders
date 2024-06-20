@@ -25,7 +25,10 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         gameOver = false;
-        gameStateText.gameObject.SetActive(false);
+        if (gameStateText != null)
+        {
+            gameStateText.gameObject.SetActive(false);
+        }
         levelCurrency = 0;
         UpdateCurrencyText();
         UpdateAmmoCounter();
@@ -54,7 +57,7 @@ public class LevelManager : MonoBehaviour
     public void LevelBeat()
     {
         gameOver = true;
-        AudioSource.PlayClipAtPoint(winSFX, player.position);
+        AudioSource.PlayClipAtPoint(winSFX, player.position, .5f);
         GameManager.AddCurrency(levelCurrency); // add to the player's total currency
         nextLevel = GameManager.NextLevel();
         GameManager.UpdateLevel();
