@@ -18,8 +18,13 @@ public class UseHealthPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha4) && int.Parse(healCounterText.text) > 0)
         {
-            FindObjectOfType<LevelManager>().UpdateHealCounter(-1);
-            FindObjectOfType<PlayerHealth>().Heal(5);
+            //GameManager.AddHeal(-1);
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            if (playerHealth.currentHealth != playerHealth.maxHealth)
+            {
+                playerHealth.Heal(5);
+                GameManager.AddHeal(-1);
+            }
         }
     }
 }

@@ -189,9 +189,9 @@ MonoBehaviour:
   range: 70
   reloadTime: 3
   timeBetweenShots: 0.01
-  magazineSize: 15
+  magazineSize: 9995
   bulletsPerTap: 5
-  reserveAmmo: 45
+  reserveAmmo: 9995
   allowButtonHold: 0
   fpsCam: {fileID: 0}
   attackPoint: {fileID: 4136768953130787092}

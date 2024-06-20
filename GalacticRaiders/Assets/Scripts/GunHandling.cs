@@ -50,7 +50,11 @@ public class GunHandling : MonoBehaviour
     {
 
         MyInput();
-
+        if (CompareTag("Rifle"))
+        {
+            bulletsLeft = GameManager.reserveAmmo;
+        }
+        
         // SetText
         if (ammoText != null)
             ammoText.SetText(bulletsLeft + "/" + reserveAmmo);
@@ -82,7 +86,7 @@ public class GunHandling : MonoBehaviour
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && reserveAmmo != 0)
+        if (Input.GetKeyDown(KeyCode.Period) && bulletsLeft < magazineSize && !reloading && reserveAmmo != 0)
         {
             Reload();
         }
@@ -138,7 +142,7 @@ public class GunHandling : MonoBehaviour
         bulletsShot--;
         if (CompareTag("Rifle"))
         {
-            FindObjectOfType<LevelManager>().UpdateAmmoCounter(-1);
+            GameManager.AddAmmo(-1);
         }
 
         Invoke("ResetShot", timeBetweenShooting);

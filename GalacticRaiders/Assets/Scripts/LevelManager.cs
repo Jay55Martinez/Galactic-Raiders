@@ -25,13 +25,15 @@ public class LevelManager : MonoBehaviour
         gameOver = false;
         levelCurrency = 0;
         UpdateCurrencyText();
+        UpdateAmmoCounter();
+        UpdateHealCounter();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateCurrencyText();
     }
 
     
@@ -77,7 +79,7 @@ public class LevelManager : MonoBehaviour
 
     // Updates currency text
     void UpdateCurrencyText() {
-        if (GameManager.CurrentLevel() == "Base")
+        if (GameManager.isBase)
         {
             currencyText.text = "Total Currency: " + GameManager.totalCurrency;
         }
@@ -88,22 +90,42 @@ public class LevelManager : MonoBehaviour
     }
 
     // Updates ammo counter
-    public void UpdateAmmoCounter(int amt)
+    public void UpdateAmmoCounter()
     {
-        Text ammoCounterText = inventoryUI[1].GetComponentInChildren<Text>();
-        ammoCounterText.text = (int.Parse(ammoCounterText.text) + amt).ToString();
+        if (inventoryUI[1].GetComponentInChildren<Text>() != null)
+        {
+            inventoryUI[1].GetComponentInChildren<Text>().text = GameManager.reserveAmmo.ToString();
+        }
     }
 
     // Updates heal counter
-    public void UpdateHealCounter(int amt)
+    public void UpdateHealCounter()
     {
-        Text healCounterText = inventoryUI[3].GetComponentInChildren<Text>();
-        //int healCount = int.Parse(healCounterText.text) + amt;
-        healCounterText.text = (int.Parse(healCounterText.text) + amt).ToString();
+        inventoryUI[3].GetComponentInChildren<Text>().text = GameManager.heals.ToString();
     }
 
     public void UpdateWeaponUI(int weaponIndex)
     {
+        for (int i = 0; i < GameManager.weapons.Length; i++)
+        {
+            if (GameManager.weapons[i])
+            {
+                if (i == 0)
+                {
+                    inventoryUI[i].transform.Find("RevolverImage").GetComponent<Image>().gameObject.SetActive(true);
+                }
+                else if (i == 1)
+                {
+                    inventoryUI[i].transform.Find("RifleImage").GetComponent<Image>().gameObject.SetActive(true);
+                    UpdateAmmoCounter();
+                }
+                else if (i ==2)
+                {
+                    inventoryUI[i].transform.Find("ShotgunImage").GetComponent<Image>().gameObject.SetActive(true);
+                }
+            }
+        }
+
         if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 2)
         {
             inventoryUI[weaponIndex].color = Color.red;

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static int totalCurrency; // tracks the player's currency throughout levels
     public static int reserveAmmo; // Tracks rifle ammo thoughout levels
+    public static int heals;
 
     // game progress
     public static int gameProgress; // which levels have the player beaten?
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
             totalCurrency = 150;
             reserveAmmo = 150;
         }
+        totalCurrency = 0;
+        reserveAmmo = 30;
         // set all player guns to false
         
         Load();
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public static string CurrentLevel()
@@ -96,12 +99,26 @@ public class GameManager : MonoBehaviour
 
     public static void AddCurrency(int amt) {
         totalCurrency += amt;
+        Debug.Log("Ammo: " + reserveAmmo);
     }
 
     public static void SubtractCurrenct(int amt) {
         if (totalCurrency >= amt) {
             totalCurrency -= amt;
         }
+    }
+
+    public static void AddAmmo(int amt)
+    {
+        reserveAmmo += amt;
+        FindObjectOfType<LevelManager>().UpdateAmmoCounter();
+
+    }
+
+    public static void AddHeal(int amt)
+    {
+        heals += amt;
+        FindObjectOfType<LevelManager>().UpdateHealCounter();
     }
 
     public static void UpdateSens(float val) {
@@ -140,7 +157,7 @@ public class GameManager : MonoBehaviour
 
         weapons[0] = PlayerPrefs.GetInt("hasPistol", 0) == 1;
         weapons[1] = PlayerPrefs.GetInt("hasRifle", 0) == 1;
-        weapons[2] = PlayerPrefs.GetInt("haseShotgun", 0) == 1;
+        weapons[2] = PlayerPrefs.GetInt("hasShotgun", 0) == 1;
 
         totalCurrency = PlayerPrefs.GetInt("totalCurrency", 0);
     }

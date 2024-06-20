@@ -647,15 +647,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: reserveAmmo
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7432106931411403421, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: magazineSize
       value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505086394793216966, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: lootDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988420212262303908, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8332954349253497727, guid: 88b8ef53ad02a4a4d80f4606c1051080, type: 3}
       propertyPath: m_TagString
