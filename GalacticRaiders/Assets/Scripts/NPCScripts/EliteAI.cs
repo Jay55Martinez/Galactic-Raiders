@@ -81,7 +81,7 @@ public class EliteAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nextDestination);
+        // Debug.Log(nextDestination);
         distToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         switch (currentState) {
@@ -211,6 +211,9 @@ public class EliteAI : MonoBehaviour
     void UpdateFireState() {
         anim.SetInteger("animState", 4);
         agent.stoppingDistance = fireDistance;
+        
+        var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+        fireTime = animDuration;
 
         nextDestination = player.transform.position;
 
@@ -224,10 +227,7 @@ public class EliteAI : MonoBehaviour
 
         if (fireTimer >= fireTime) {
             if (!isDead) {
-                var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-                fireTime = animDuration;
                 Fire();
-                fireTimer = 0;
             }
         }
     }
@@ -251,6 +251,8 @@ public class EliteAI : MonoBehaviour
     void Fire() {
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         AudioSource.PlayClipAtPoint(fireSFX, firePoint.position);
+        fireTimer = 0;
+        Debug.Log("BAM");
     }
 
     void FaceTarget(Vector3 target) {
