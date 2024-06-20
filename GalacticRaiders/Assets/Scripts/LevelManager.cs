@@ -49,8 +49,8 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         AudioSource.PlayClipAtPoint(winSFX, player.position);
         GameManager.AddCurrency(levelCurrency); // add to the player's total currency
-        GameManager.UpdateLevel();
         nextLevel = GameManager.NextLevel();
+        GameManager.UpdateLevel();
         if (!string.IsNullOrEmpty(nextLevel))
         {
             Invoke("LoadNextLevel", 2);

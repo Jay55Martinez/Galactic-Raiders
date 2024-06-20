@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         isBase = true;
-        gameProgress = 1;  
+        gameProgress = 0;  
         levelAmt = 3;
         if (devMode) {
             weapons[0] = true;
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         } else if (gameProgress <= levelAmt) {
             // gameProgress++;
             // isBase = false;
-            return "Level" + gameProgress.ToString();
+            return "Level" + (gameProgress+1).ToString();
         } else {
             return null;
         }
@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static void Save() {
-
+        PlayerPrefs.SetInt("gameProgress", gameProgress);
+        // PlayerPrefs.SetInt("isBase", )
     }
 }
