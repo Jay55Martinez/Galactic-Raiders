@@ -28,6 +28,10 @@ public class GunPurchaseBehaviour : MonoBehaviour
     public void Purchase() {
         if (GameManager.totalCurrency >= price) {
             GameManager.weapons[slot] = true;
+            if (slot == 1)
+            {
+                GameManager.AddAmmo(30);
+            }
             FindObjectOfType<LevelManager>().UpdateWeaponUI(3);
             Destroy(gameObject);
             if (purchaseSFX != null) {

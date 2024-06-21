@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             reserveAmmo = 150;
         }
         totalCurrency = 0;
-        reserveAmmo = 30;
+        // reserveAmmo = 30;
         // set all player guns to false
         
         Load();
@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("totalCurrency", 0);
 
         Load();
+        FindObjectOfType<MainMenuBehaviour>().StartGame();
     }
 
     private static void RevertLevel() { // sets gameProgress and isBase level to last completed level state
