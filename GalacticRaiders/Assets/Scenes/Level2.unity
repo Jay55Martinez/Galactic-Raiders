@@ -2128,9 +2128,17 @@ PrefabInstance:
       value: LevelManager
       objectReference: {fileID: 0}
     - target: {fileID: 1975837157582473116, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
+      propertyPath: deathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: c1479ab351dfcaa45809948de5b1cbdb, type: 3}
+    - target: {fileID: 1975837157582473116, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 1354435435}
+    - target: {fileID: 1975837157582473116, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
+      propertyPath: gameStateText
+      value: 
+      objectReference: {fileID: 822906464}
     - target: {fileID: 1975837157582473116, guid: ebed3661ce096e54da12c60076e58a14, type: 3}
       propertyPath: inventoryUI.Array.data[0]
       value: 
@@ -3043,6 +3051,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &822906464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1835269804674787887, guid: e1aeddfcd3f8aec46b864069a848ca39, type: 3}
+  m_PrefabInstance: {fileID: 1354435427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &834824058
 Mesh:
   m_ObjectHideFlags: 0
