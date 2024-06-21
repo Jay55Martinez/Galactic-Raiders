@@ -118,7 +118,7 @@ public class GunHandling : MonoBehaviour
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
         // RayCasting
-        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
+        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range))
         {
             // Adding bullet trails
             if (BulletTrail != null) {

@@ -90,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
         }
         if (progress.CompareTag("ForceField"))
         {
-            progress.SetActive(false);
+            Destroy(progress);
         }
     }
 

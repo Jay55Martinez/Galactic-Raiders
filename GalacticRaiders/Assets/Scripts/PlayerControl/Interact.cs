@@ -44,6 +44,10 @@ public class Interact : MonoBehaviour
                 {
                     lookAt.GetComponent<ButtonDoor>().OpenDoor();
                 }
+                else if (lookAt.CompareTag("EndOfLevel"))
+                {
+                    lookAt.GetComponent<EndGame>().GameOver();
+                }
                 // add gun pickup
                 else {
                     Destroy(lookAt);
@@ -79,6 +83,12 @@ public class Interact : MonoBehaviour
             {
                 lookAt = hit.collider.gameObject;
                 pickupText.text = "Press 'E' to open door";
+                pickupText.gameObject.SetActive(true);
+            }
+            else if (hit.collider.CompareTag("EndOfLevel"))
+            {
+                lookAt = hit.collider.gameObject;
+                pickupText.text = "Press 'E' to WIN";
                 pickupText.gameObject.SetActive(true);
             }
             else 

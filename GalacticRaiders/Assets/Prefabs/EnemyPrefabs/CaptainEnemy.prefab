@@ -3443,6 +3443,7 @@ GameObject:
   - component: {fileID: 1989028474147976196}
   - component: {fileID: 803834666927719703}
   - component: {fileID: 3178344989288670334}
+  - component: {fileID: -8033912984818717636}
   m_Layer: 0
   m_Name: CaptainEnemy
   m_TagString: Enemy
@@ -3606,8 +3607,29 @@ MonoBehaviour:
   healDrop: {fileID: 5634378079872383410, guid: c047db1e212e6a4459cadf81eea3c24a, type: 3}
   ammoDrop: {fileID: 964192862192107480, guid: 6bfa33d85e5923342b635efcc1e72dea, type: 3}
   worth: 150
-  deathSFX: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: 621d1e1ee7083874097744b893433a27, type: 3}
   slider: {fileID: 7172934100144401070}
+--- !u!65 &-8033912984818717636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576333101176628697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.97, y: 1.93, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6601464895846919787
 GameObject:
   m_ObjectHideFlags: 0

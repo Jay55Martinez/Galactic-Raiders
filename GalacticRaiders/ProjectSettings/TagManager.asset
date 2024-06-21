@@ -20,6 +20,7 @@ TagManager:
   - Button
   - WeaponHolder
   - ForceField
+  - EndOfLevel
   layers:
   - Default
   - TransparentFX
